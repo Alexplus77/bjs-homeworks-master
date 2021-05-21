@@ -106,10 +106,11 @@ function getAverageScore2(data){
     const arrNew={}
 for (let[key, value] of Object.entries(data)){
 return arr= [key, value.reduce((acc, elem)=>acc+elem/value.length)]
-
+const arrNew={[...arrNew, arr]}
+console.log(arr)
 }
 
-console.log(arr)
+
 }
 
 function getAverageMark2(data){
