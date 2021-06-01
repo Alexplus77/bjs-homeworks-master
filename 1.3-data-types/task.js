@@ -20,7 +20,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let n = parsDate(date)
     
 console.log(n)
-  let resultYear = S * (P + P / (((1 + P) ** n ) - 1)) * 12;
+  let resultYear = S * (P + P / (((1 + P) ** n ) - 1)) * n;
 
   let totalAmount = Math.floor(resultYear * 100) / 100;
 if ( n<0){
