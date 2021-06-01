@@ -19,17 +19,17 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let S = amountNum - contributionNum;
     let n = parsDate(date)
     
-console.log(n)
+console.log(amountNum)
   let resultYear = S * (P + P / (((1 + P) ** n ) - 1)) * 12;
 
   let totalAmount = Math.floor(resultYear * 100) / 100;
 
-  if (isNaN(percentNum)) {
+  if (isNaN(percentNum) || percentNum<0) {
     return `Параметр "Процентная ставка" содержит неправильное значение ${percent} `;
   } else if (isNaN(contributionNum) || contributionNum<0) {
-    return `Параметр contribution содержит неправильное значение ${contribution} `;
+    return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution} `;
   } else if (isNaN(amountNum) || amountNum<0) {
-    return `Параметр amount содержит неправильное значение ${amount} `;
+    return `Параметр "Общая стоимость" содержит неправильное значение ${amount} `;
   } else {
     return totalAmount;
   }
