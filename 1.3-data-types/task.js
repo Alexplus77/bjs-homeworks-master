@@ -32,8 +32,10 @@ if ( n<0){
     return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution} `;
   } else if (isNaN(amountNum) || amountNum<0) {
     return `Параметр "Общая стоимость" содержит неправильное значение ${amount} `;
+  } else if( totalAmount<0) {
+    return totalAmount = 0;
   } else {
-    return totalAmount;
+    return totalAmount
   }
 
   // код для задачи №1 писать здесь
