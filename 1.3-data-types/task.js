@@ -22,7 +22,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 console.log(n)
   let resultYear = S * (P + P / (((1 + P) ** n ) - 1)) * n;
 
-  let totalAmount = Math.floor(resultYear * 100) / 100;
+  let totalAmount = Math.round(resultYear * 100) / 100;
 if ( n<0){
   return `Параметр "Срок ипотеки" содержит неправильное значение ${n}`
 }
