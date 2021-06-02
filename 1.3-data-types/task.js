@@ -24,9 +24,7 @@ function calculate(percentNum, contributionNum, amountNum, date){
   
     let totalAmount = Math.round(resultYear * 100) / 100;
   
-    function validateParam (param){ 
-      console.log(param)
-      return isNaN(param) || param <0 } 
+    
   
   
     for ( const param of arguments){
@@ -41,6 +39,9 @@ function calculate(percentNum, contributionNum, amountNum, date){
    
   }
 
+  function validateParam (param){ 
+    console.log(param)
+    return isNaN(param) || param <0 } 
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
