@@ -39,7 +39,7 @@ console.log(arr)
    
 if (validateParam(param)){
   for(let [key, value] of Object.entries(arr))
-  return `Параметр "${arr[key]}" содержит неправильное значение ${param}`
+  {return `Параметр "${arr[key]}" содержит неправильное значение ${param}`}
 } else { return totalAmount}
   }
  
