@@ -11,7 +11,7 @@ function parsDate(date){
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
 
-  const percentNum = +percent;
+  const percentNum = Number(percent);
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
 
@@ -19,27 +19,50 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let S = amountNum - contributionNum;
     let n = parsDate(date)
     
-console.log(n)
+
   let resultYear = S * (P + P / (((1 + P) ** n ) - 1)) * n;
 
   let totalAmount = Math.round(resultYear * 100) / 100;
+
+ 
+    
+  let validate = val(percentNum, contributionNum, amountNum)
+  console.log(validate)
+
 if ( n<0){
-  return `Параметр "Срок ипотеки" содержит неправильное значение ${n}`
+  let date2 = date.toLocaleString()
+  return `Параметр "Срок ипотеки" содержит неправильное значение ${date2}`
 }
   else if (isNaN(percentNum) || percentNum<0) {
-    return `Параметр "Процентная ставка" содержит неправильное значение ${percent} `;
+    return `Параметр "Процентная ставка" содержит неправильное значение ${percent}`;
   } else if (isNaN(contributionNum) || contributionNum<0) {
-    return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution} `;
+    return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution}`;
   } else if (isNaN(amountNum) || amountNum<0) {
-    return `Параметр "Общая стоимость" содержит неправильное значение ${amount} `;
+    return `Параметр "Общая стоимость" содержит неправильное значение ${amount}`;
   } else if( totalAmount<0) {
     return totalAmount = 0;
   } else {
     return totalAmount
-  }
+  }  
+   
 
-  // код для задачи №1 писать здесь
 }
+
+
+function val(percentNum, contributionNum, amountNum){
+  let arg = arguments
+  for (params of arg){
+    if(isNaN(params) || params<0){
+return false
+    } else{
+      return true
+    }
+  }
+  
+}
+
+
+
 //! Задача №2
 function getGreeting(name) {
   let messedge= 'Привет, мир! Меня зовут'
