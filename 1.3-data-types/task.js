@@ -16,6 +16,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
 
+function calculate(percentNum, contributionNum, amountNum, date){
 const arr ={  percentNum:"Процентная ставка",
   contributionNum:"Первоначальный взнос",
 amountNum:"Общая стоимость",
@@ -43,6 +44,8 @@ if (validateParam(param)){
 } else { return totalAmount}
   }
  
+}  return calculate(percentNum, contributionNum, amountNum, date)
+
 }
 
 
