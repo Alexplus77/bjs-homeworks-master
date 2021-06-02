@@ -27,7 +27,8 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   //console.log(validate);
 
   if (validate === false) {
-    return validate;
+    // ! Как сюда название параметра и значение параметра с false передать?
+     return `Параметр <название параметра> содержит неправильное значение <значение параметра>`;
   } else {
     return totalAmount;
   }
