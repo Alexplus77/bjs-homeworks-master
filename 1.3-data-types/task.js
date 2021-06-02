@@ -24,24 +24,28 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount = Math.round(resultYear * 100) / 100;
 
   let validate = val(percentNum, contributionNum, amountNum);
-  console.log(validate);
+  //console.log(validate);
 
-  if (validate === true) {
-    return totalAmount;
-  } else {
+  if (validate === false) {
     return validate;
+  } else {
+    return totalAmount;
   }
 }
 
 function val(percentNum, contributionNum, amountNum) {
-  let arg = arguments;
-  for (params of arg) {
-    if (isNaN(params) || params < 0) {
-      return `Параметр ${params}содержит неправильное значение ${params}`;
-    } else {
-      return true;
-    }
+  let a = arguments
+  let params 
+  for (  params of a) {
+    
+   if(isNaN(params) || params<0){
+    
+    return false
+    
+   }
   }
+  
+
 }
 
 //! Задача №2
