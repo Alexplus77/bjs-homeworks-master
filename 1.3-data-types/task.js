@@ -7,57 +7,49 @@ function parsDate(date) {
     12 * (date.getFullYear() - dateNow.getFullYear());
   return nDate;
 }
-function calculate(percentNum, contributionNum, amountNum, date){
-  const arr ={  percentNum:"Процентная ставка",
-    contributionNum:"Первоначальный взнос",
-  amountNum:"Общая стоимость",
-    date:"Срок ипотеки"}
-  
-  
-  console.log(contributionNum)
-  
-    const P = percentNum / 100 / 12;
-    let S = amountNum - contributionNum;
-    let n = parsDate(date);
-  
-    let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
-  
-    let totalAmount = Math.round(resultYear * 100) / 100;
-  
-    
-  
-  
-    for ( const param of arguments){
-     
-  if (validateParam(param)){
-    
-    for(let [key, value] of Object.entries(arr))
-    {
-      return `Параметр "${arr[key]}" содержит неправильное значение ${param}`}
-  } else { return totalAmount}
-    }
-   
-  }
+function calculate(percentNum, contributionNum, amountNum, date) {
+  const arr = {
+    percentNum: "Процентная ставка",
+    contributionNum: "Первоначальный взнос",
+    amountNum: "Общая стоимость",
+    date: "Срок ипотеки",
+  };
 
-  function validateParam (param){ 
-    console.log(param)
-    return isNaN(param) || param <0 } 
+  console.log(contributionNum);
+
+  const P = percentNum / 100 / 12;
+  let S = amountNum - contributionNum;
+  let n = parsDate(date);
+
+  let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
+
+  let totalAmount = Math.round(resultYear * 100) / 100;
+
+  for (const param of arguments) {
+    if (validateParam(param)) {
+      for (let [key, value] of Object.entries(arr)) {
+        return `Параметр "${arr[key]}" содержит неправильное значение ${param}`;
+      }
+    } else {
+      return totalAmount;
+    }
+  }
+}
+
+function validateParam(param) {
+  console.log(param);
+  return isNaN(param) || param < 0;
+}
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
-  
+
   const percentNum = Number(percent);
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
 
-  return calculate(percentNum, contributionNum, amountNum, date)
-
+  return calculate(percentNum, contributionNum, amountNum, date);
 }
-
-
-  
-
-
 
 //! Задача №2
 function getGreeting(name) {
