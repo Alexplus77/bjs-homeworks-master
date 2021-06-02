@@ -22,32 +22,23 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
 
   let totalAmount = Math.round(resultYear * 100) / 100;
+  
+function validateParam (param){isNaN(param)|| param <0 }
 
-  let validate = val(percentNum, contributionNum, amountNum);
-  //console.log(validate);
-
-  if (validate === false) {
-    // ! Как сюда название параметра и значение параметра с false передать?
-     return `Параметр <название параметра> содержит неправильное значение <значение параметра>`;
-  } else {
-    return totalAmount;
+  for ( const param of arguments){
+    
+if (validateParam(param)){
+  return `Параметр ${param} содержит неправильное значение ${param}`
+} else { return totalAmount}
   }
+
+ 
 }
 
-function val(percentNum, contributionNum, amountNum) {
-  
-  
-  for (  params of arguments) {
-    
-   if(isNaN(params) || params<0){
-    
-    return false
-    
-   }
-  }
+
   
 
-}
+
 
 //! Задача №2
 function getGreeting(name) {
