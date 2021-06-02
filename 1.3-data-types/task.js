@@ -7,6 +7,39 @@ function parsDate(date) {
     12 * (date.getFullYear() - dateNow.getFullYear());
   return nDate;
 }
+function calculate(percentNum, contributionNum, amountNum, date){
+  const arr ={  percentNum:"Процентная ставка",
+    contributionNum:"Первоначальный взнос",
+  amountNum:"Общая стоимость",
+    date:"Срок ипотеки"}
+  
+  
+  console.log(contributionNum)
+  
+    const P = percentNum / 100 / 12;
+    let S = amountNum - contributionNum;
+    let n = parsDate(date);
+  
+    let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
+  
+    let totalAmount = Math.round(resultYear * 100) / 100;
+  
+    function validateParam (param){ 
+      console.log(param)
+      return isNaN(param) || param <0 } 
+  
+  
+    for ( const param of arguments){
+     
+  if (validateParam(param)){
+    
+    for(let [key, value] of Object.entries(arr))
+    {
+      return `Параметр "${arr[key]}" содержит неправильное значение ${param}`}
+  } else { return totalAmount}
+    }
+   
+  }
 
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
@@ -16,35 +49,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
 
-function calculate(percentNum, contributionNum, amountNum, date){
-const arr ={  percentNum:"Процентная ставка",
-  contributionNum:"Первоначальный взнос",
-amountNum:"Общая стоимость",
-  date:"Срок ипотеки"}
-
-
-console.log(arr)
-
-  const P = percentNum / 100 / 12;
-  let S = amountNum - contributionNum;
-  let n = parsDate(date);
-
-  let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
-
-  let totalAmount = Math.round(resultYear * 100) / 100;
-
-  function validateParam (param){ return isNaN(param) || param <0 } 
-
-
-  for ( const param of arguments){
-   
-if (validateParam(param)){
-  for(let [key, value] of Object.entries(arr))
-  {return `Параметр "${arr[key]}" содержит неправильное значение ${param}`}
-} else { return totalAmount}
-  }
- 
-}  return calculate(percentNum, contributionNum, amountNum, date)
+  return calculate(percentNum, contributionNum, amountNum, date)
 
 }
 
