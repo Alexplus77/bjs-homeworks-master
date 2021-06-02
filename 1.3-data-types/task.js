@@ -7,6 +7,10 @@ function parsDate(date) {
     12 * (date.getFullYear() - dateNow.getFullYear());
   return nDate;
 }
+const arr ={percent1: "Процентная ставка",
+contribution1: "Первоначальный взнос",
+amount1: "Общая стоимость",
+date1: "Срок ипотеки"}
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
@@ -14,7 +18,10 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const percentNum = Number(percent);
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
-const arr ={percentNum: ""}
+
+
+console.log(arr)
+
   const P = percentNum / 100 / 12;
   let S = amountNum - contributionNum;
   let n = parsDate(date);
@@ -29,7 +36,8 @@ const arr ={percentNum: ""}
   for ( const param of arguments){
    
 if (validateParam(param)){
-  return `Параметр ${param} содержит неправильное значение ${param}`
+  for(let [key, value] of Object.entries(arr))
+  return `Параметр ${arr[key]} содержит неправильное значение ${param}`
 } else { return totalAmount}
   }
 
