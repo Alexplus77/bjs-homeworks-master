@@ -40,7 +40,6 @@ if (validateParam(param)){
   return `Параметр ${arr[key]} содержит неправильное значение ${param}`
 } else { return totalAmount}
   }
-
  
 }
 
