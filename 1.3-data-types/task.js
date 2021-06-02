@@ -47,7 +47,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const percentNum = Number(percent);
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
-
+  validateParam(param)
   return calculate(percentNum, contributionNum, amountNum, date);
 }
 
