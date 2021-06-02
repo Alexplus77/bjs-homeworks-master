@@ -16,10 +16,10 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
 
-const arr ={ "Процентная ставка": percentNum,
- "Первоначальный взнос": contributionNum,
-"Общая стоимость":amountNum,
- "Срок ипотеки": date}
+const arr ={  percentNum:"Процентная ставка",
+  contributionNum:"Первоначальный взнос",
+amountNum:"Общая стоимость",
+  date:"Срок ипотеки"}
 
 
 console.log(arr)
@@ -39,7 +39,7 @@ console.log(arr)
    
 if (validateParam(param)){
   for(let [key, value] of Object.entries(arr))
-  return `Параметр ${arr[key]} содержит неправильное значение ${arr[value]}`
+  return `Параметр "${arr[key]}" содержит неправильное значение ${param}`
 } else { return totalAmount}
   }
  
