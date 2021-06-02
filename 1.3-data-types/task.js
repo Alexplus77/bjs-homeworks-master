@@ -35,9 +35,9 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function val(percentNum, contributionNum, amountNum) {
-  let a = arguments
-  let params 
-  for (  params of a) {
+  
+  
+  for (  params of arguments) {
     
    if(isNaN(params) || params<0){
     
