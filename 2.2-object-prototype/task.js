@@ -1,15 +1,12 @@
-String.prototype.isPalindrome
+//!Задача№1
+String.prototype.isPalindrome= function(){
+   let value = this.toLowerCase().replace(/\s+/g, '')
+    
+    let value2 = value.toLowerCase().replace(/\s+/g, '').split('').reverse().join('')
 
-const isPalindrome=(value)=>{
-     this.value = value.toLowerCase().replace(/\s+/g, '')
-    console.log(value)
-this.value2 = value.toLowerCase().replace(/\s+/g, '').split('').reverse().join('')
-
-if(this.value2 === this.value){return true}else{return false}
-
+if(value2 === value){return true}else{return false}
 }
- 
-console.log(isPalindrome('А роза упала на лапу Азора'))
+
 
 
 function getAverageMark(marks) {
