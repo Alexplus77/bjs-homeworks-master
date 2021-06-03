@@ -1,45 +1,14 @@
 //! Задача №1
-function parsDate(date) {
+const parsDate = (date) => {
   let dateNow = new Date();
   let nDate =
     date.getMonth() -
     dateNow.getMonth() +
     12 * (date.getFullYear() - dateNow.getFullYear());
-  return nDate;
-}
-function calculate(percentNum, contributionNum, amountNum, date) {
-  const arr = {
-    percentNum: "Процентная ставка",
-    contributionNum: "Первоначальный взнос",
-    amountNum: "Общая стоимость",
-    date: "Срок ипотеки",
-  };
-
-  console.log(contributionNum);
-
-  const P = percentNum / 100 / 12;
-  let S = amountNum - contributionNum;
-  let n = parsDate(date);
-
-  let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
-
-  let totalAmount = Math.round(resultYear * 100) / 100;
-
-  for (const param of arguments) {
-    if (validateParam(param)) {
-      for (let [key, value] of Object.entries(arr)) {
-        return `Параметр "${arr[key]}" содержит неправильное значение ${param}`;
-      }
-    } else {
-      return totalAmount;
-    }
+  if (nDate > 0) {
+    return nDate;
   }
-}
-
-function validateParam(param) {
-  console.log(param);
-  return isNaN(param) || param < 0;
-}
+};
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
@@ -47,8 +16,42 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   const percentNum = Number(percent);
   const contributionNum = Number(contribution);
   const amountNum = Number(amount);
-  validateParam(param)
-  return calculate(percentNum, contributionNum, amountNum, date);
+
+  const arr = [
+    "Процентная ставка",
+    "Первоначальный взнос",
+    "Общая стоимость",
+    "Срок ипотеки",
+  ];
+
+  const P = percentNum / 100 / 12;
+  let S = amountNum - contributionNum;
+  let n = parsDate(date);
+  const args = [percent, contribution, amount, n];
+
+  for (let i = 0; i < args.length; i++) {
+    let value = args[i];
+    if (value === undefined) {
+      value = date.toLocaleString();
+    }
+    if (validateParam(value)) {
+      return `Параметр "${arr[i]}" содержит неправильное значение ${value}`;
+    }
+  }
+
+  function validateParam(value) {
+    return isNaN(value) || value < 0;
+  }
+
+  let resultYear = S * (P + P / ((1 + P) ** n - 1)) * n;
+
+  let totalAmount = Math.round(resultYear * 100) / 100;
+  if (totalAmount > 0) {
+    return totalAmount;
+  } else {
+    totalAmount = 0;
+    return totalAmount;
+  }
 }
 
 //! Задача №2
