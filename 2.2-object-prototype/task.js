@@ -13,8 +13,14 @@ String.prototype.isPalindrome = function () {
 };
 
 function getAverageMark(marks) {
-  // код для задачи №2 писать здесь
-  // return averageMark
+  if (marks.length === 0) {
+    return 0;
+  }
+  const roundedAverage = Math.round(
+    marks.reduce((acc, elem) => acc + elem) / marks.length
+  );
+
+  return roundedAverage;
 }
 
 function checkBirthday(birthday) {
