@@ -32,3 +32,13 @@ function checkBirthday(birthday) {
     return true;
   }
 }
+//! Задача 3 вариант2
+function checkBirthday(birthday) {
+  const age = Math.round(
+    (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
+      31536000
+  );
+  if (age > 18) {
+    return true;
+  }
+}
