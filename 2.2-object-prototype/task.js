@@ -11,9 +11,9 @@ String.prototype.isPalindrome = function () {
 
   return value2 === value;
 };
-//! Задача2
+//! Задача 2
 function getAverageMark(marks) {
-  if (marks.length === 0) {
+  if (!marks.length) {
     return 0;
   }
   const roundedAverage = Math.round(
@@ -22,8 +22,10 @@ function getAverageMark(marks) {
 
   return roundedAverage;
 }
-
+//! Задача 3
 function checkBirthday(birthday) {
-  // код для задачи №3 писать здесь
+  const now = new Date().getTime()
+  
+  console.log(birthday)
   // return verdict
 }
