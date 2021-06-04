@@ -11,7 +11,7 @@ String.prototype.isPalindrome = function () {
 
   return value2 === value;
 };
-
+//! Задача2
 function getAverageMark(marks) {
   if (marks.length === 0) {
     return 0;
