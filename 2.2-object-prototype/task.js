@@ -24,8 +24,11 @@ function getAverageMark(marks) {
 }
 //! Задача 3
 function checkBirthday(birthday) {
-  const now = new Date().getTime()
-  
-  console.log(birthday)
-  // return verdict
+  const now = new Date().getTime() / 1000;
+  const bd = new Date(birthday).getTime() / 1000;
+  const diff = now - bd;
+  const age = Math.round(diff / 31536000);
+  if (age > 18) {
+    return true;
+  }
 }
