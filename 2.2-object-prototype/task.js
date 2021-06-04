@@ -9,11 +9,7 @@ String.prototype.isPalindrome = function () {
     .reverse()
     .join("");
 
-  if (value2 === value) {
-    return true;
-  } else {
-    return false;
-  }
+  return value2 === value;
 };
 
 function getAverageMark(marks) {
