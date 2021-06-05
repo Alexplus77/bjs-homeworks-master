@@ -23,22 +23,20 @@ function getAverageMark(marks) {
   return roundedAverage;
 }
 //! Задача 3
-function checkBirthday(birthday) {
-  const now = new Date().getTime() / 1000;
-  const bd = new Date(birthday).getTime() / 1000;
-  const diff = now - bd;
-  const age = Math.round(diff / 31536000);
-  if (age > 18) {
-    return true;
-  }
-}
+
+
 //! Задача 3 вариант2
 function checkBirthday(birthday) {
-  const age = Math.round(
+  const persn =Math.round(
     (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
       31536000
+  )/4
+  const age = Math.round(
+    (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
+      31536000 + (persn/360)
   );
-  if (age > 18) {
+  console.log(persn);
+  if (age >= 18) {
     return true;
   }
 }
