@@ -24,20 +24,15 @@ function getAverageMark(marks) {
 }
 //! Задача 3
 
-
 //! Задача 3 вариант2
 function checkBirthday(birthday) {
-  const persn =
-    (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
-      31536000
-  /4
-  const age = Math.round(
-    (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
-      31536000 + (persn/365)
-  );
-  console.log(persn);
+  const person = new Date() - Date.parse(birthday);
+
+  const age = Math.floor(person / 1000 / 60 / 60 / 24) / 365.25;
+  console.log(person);
   console.log(age);
   if (age >= 18) {
     return true;
   }
 }
+console.log(checkBirthday("2003-06-07"));
