@@ -27,15 +27,16 @@ function getAverageMark(marks) {
 
 //! Задача 3 вариант2
 function checkBirthday(birthday) {
-  const persn =Math.round(
+  const persn =
     (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
       31536000
-  )/4
+  /4
   const age = Math.round(
     (new Date().getTime() / 1000 - new Date(birthday).getTime() / 1000) /
-      31536000 + (persn/360)
+      31536000 + (persn/365)
   );
   console.log(persn);
+  console.log(age);
   if (age >= 18) {
     return true;
   }
