@@ -29,10 +29,8 @@ function checkBirthday(birthday) {
   const person = new Date() - Date.parse(birthday);
 
   const age = Math.floor(person / 1000 / 60 / 60 / 24) / 365.25;
-  console.log(person);
-  console.log(age);
+  
   if (age >= 18) {
     return true;
   }
 }
-console.log(checkBirthday("2003-06-07"));
