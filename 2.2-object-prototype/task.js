@@ -33,4 +33,3 @@ function checkBirthday(birthday) {
   const resalt= (age >= 18) ?  true:false 
   return resalt
 }
-console.log(checkBirthday('1977-11-29'))
