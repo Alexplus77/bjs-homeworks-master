@@ -79,7 +79,7 @@ const detective = new DetectiveBook(
   256
 );
 
-magazine.state = 10; // починка журнала 30 станиц
+magazine.state = 10; // новые журналы
 console.log(magazine.state)//10
 magazine.fix()
 console.log(magazine.state)//15
