@@ -13,12 +13,14 @@ class PrintEditionItem {
   }
 
   set state(namber) {
-    if (namber < 0) {
+      const nam= Number(namber)
+      if (isNaN(nam) ){ console.log('Вы ввели не число')}
+    if (nam < 0) {
       this._state = 0;
-    } else if (namber > 100) {
+    } else if (nam > 100) {
       this._state = 100;
     } else {
-      this._state = namber;
+      this._state = nam;
     }
   }
   get state() {
