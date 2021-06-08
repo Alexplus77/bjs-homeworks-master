@@ -79,10 +79,10 @@ const detective = new DetectiveBook(
   256
 );
 
-magazine.state = 10; // новые журналы
-console.log(magazine.state)//10
+magazine.state = 10; 
+console.log(magazine.state)//10  новые журналы или испорченные
 magazine.fix()
-console.log(magazine.state)//15
+console.log(magazine.state)//15 можно подклеить
 console.log(printItem);
 console.log(magazine);
 console.log(book);
