@@ -30,7 +30,7 @@ function checkBirthday(birthday) {
 
   const age = Math.floor(person / 1000 / 60 / 60 / 24) / 365.25;
   
-  if (age >= 18) {
-    return true;
-  }else{return false}
+  const resalt= (age >= 18) ?  true:false 
+  return resalt
 }
+console.log(checkBirthday('1977-11-29'))
