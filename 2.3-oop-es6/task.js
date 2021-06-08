@@ -78,7 +78,11 @@ const detective = new DetectiveBook(
   2019,
   256
 );
-magazine.state = 30; // починка журнала 30 станиц
+
+magazine.state = 10; // починка журнала 30 станиц
+console.log(magazine.state)//10
+magazine.fix()
+console.log(magazine.state)//15
 console.log(printItem);
 console.log(magazine);
 console.log(book);
