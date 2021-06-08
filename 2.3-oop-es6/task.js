@@ -22,6 +22,7 @@ class PrintEditionItem {
     }
   }
   get state() {
+      
     return this._state;
   }
 }
@@ -30,8 +31,7 @@ class Magazine extends PrintEditionItem {
     super(name, releaseDate, pagesCount);
     this.name = name;
     this.releaseDate = releaseDate;
-    this.pagesCount = pagesCount;
-    this.state = 100;
+    this.pagesCount = pagesCount;    
     this.type = "magazine";
   }
 }
@@ -41,8 +41,7 @@ class Book extends PrintEditionItem {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this.author = author;
-    this.state = 100;
+    this.author = author;   
     this.type = "book";
   }
 }
@@ -53,8 +52,7 @@ class NovelBook extends Book {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this.author = author;
-    this.state = 100;
+    this.author = author;    
     this.type = "novel";
   }
 }
@@ -65,8 +63,7 @@ class FantasticBook extends Book {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this.author = author;
-    this.state = 100;
+    this.author = author;    
     this.type = "fantastic";
   }
 }
@@ -77,8 +74,7 @@ class DetectiveBook extends Book {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this.author = author;
-    this.state = 100;
+    this.author = author;   
     this.type = "detective";
   }
 }
