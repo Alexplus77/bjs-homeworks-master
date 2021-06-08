@@ -66,7 +66,7 @@ const book = new Book('А. Сапковский', 'Меч Предназначе
 const novel = new NovelBook('А. Сапковский', 'Меч Предназначения', 1992, 384);
 const fantastic = new FantasticBook('Джон Толкин', 'Властелин колец', 1954, 2093);
 const detective = new DetectiveBook('Агата Кристи', 'Десять негритят', 2019, 256)
-
+magazine.state=30// починка книги 30 станиц
 console.log(printItem);
 console.log(magazine);
 console.log(book);
