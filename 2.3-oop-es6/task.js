@@ -3,7 +3,6 @@ class PrintEditionItem {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-
     this.state = 100;
     this.type = null;
   }
@@ -32,7 +31,6 @@ class Magazine extends PrintEditionItem {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-
     this.state = 100;
     this.type = "magazine";
   }
@@ -85,4 +83,4 @@ class DetectiveBook extends Book {
   }
 }
 
-const printItem = new NovelBook();
+const printItem = new PrintEditionItem();
