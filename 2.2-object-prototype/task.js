@@ -34,4 +34,4 @@ function checkBirthday(birthday) {
 
   
 }
-console.log(checkBirthday('2003-03-20'))
+console.log(checkBirthday('2004-03-20'))
