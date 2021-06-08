@@ -60,16 +60,26 @@ class DetectiveBook extends Book {
   }
 }
 
-const printItem = new PrintEditionItem('Типовой школьный журнал', 2019, 102);
-const magazine = new Magazine('Forbes', 2020, 180);
-const book = new Book('А. Сапковский', 'Меч Предназначения', 1992, 384);
-const novel = new NovelBook('А. Сапковский', 'Меч Предназначения', 1992, 384);
-const fantastic = new FantasticBook('Джон Толкин', 'Властелин колец', 1954, 2093);
-const detective = new DetectiveBook('Агата Кристи', 'Десять негритят', 2019, 256)
-magazine.state=30// починка книги 30 станиц
+const printItem = new PrintEditionItem("Типовой школьный журнал", 2019, 102);
+const magazine = new Magazine("Forbes", 2020, 180);
+const book = new Book("А. Сапковский", "Меч Предназначения", 1992, 384);
+const novel = new NovelBook("А. Сапковский", "Меч Предназначения", 1992, 384);
+const fantastic = new FantasticBook(
+  "Джон Толкин",
+  "Властелин колец",
+  1954,
+  2093
+);
+const detective = new DetectiveBook(
+  "Агата Кристи",
+  "Десять негритят",
+  2019,
+  256
+);
+magazine.state = 30; // починка книги 30 станиц
 console.log(printItem);
 console.log(magazine);
 console.log(book);
 console.log(novel);
 console.log(fantastic);
-console.log(detective)
+console.log(detective);
