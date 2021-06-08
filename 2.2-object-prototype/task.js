@@ -31,5 +31,6 @@ function checkBirthday(birthday) {
   const age = Math.floor(person / 1000 / 60 / 60 / 24) / 365.25;
   
   const resalt= (age >= 18) ?  true:false 
+
   return resalt
 }
