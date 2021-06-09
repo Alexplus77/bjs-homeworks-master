@@ -12,15 +12,14 @@ class PrintEditionItem {
     return this.state;
   }
 
-  set state(number) {
-      const num= Number(number) // По условию задачи number должно быть числом
-      if (isNaN(num) ){ console.log('Вы ввели не число')}
-    if (num < 0) {
+  set state(number) {      
+      if (isNaN(Number(number)) ){ console.log('Вы ввели не число')}// По условию задачи number должно быть числом
+    if (number < 0) {
       this._state = 0;
-    } else if (num > 100) {
+    } else if (number > 100) {
       this._state = 100;
     } else {
-      this._state = num;
+      this._state = number;
     }
   }
   get state() {
