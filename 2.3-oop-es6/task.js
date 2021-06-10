@@ -107,14 +107,22 @@ class Library extends PrintEditionItem {
   }
 
   findBookBy(type, value) {
-    this.key = type;
+    this.type = type;
     this.value = value;
+    this.arr = [this.type, this.value]; // Определяем в массив ключ и значение из аргументов метода
+    // Перебераем массив библиотеки
+    this.books.forEach((element) => {
+      this.booksArr = Object.entries(element); // Переводим в массивы ключ и значение каждой книги в библиотеке.
 
-    console.log(Object.entries(this.books.find((elem) => elem.type)));
-
-    for (let i = 0; i < this.books.length; i++) {
-      //this.books2 = Object.values(this.books)
-    }
+      // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
+      for (let i = 0; i < this.booksArr.length; i++) {
+        if (this.booksArr[i].every((o) => this.arr.includes(o))) {
+          console.log(element);// ?Здесь находит книгу в библиотеке
+          
+          return element;//?Здесь undefined
+        }
+      }
+    });
   }
 
   giveBookByName(bookName) {}
@@ -140,7 +148,8 @@ library.addBook(
 );
 library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
 library.addBook(new Magazine("Мурзилка", 1924, 60));
-library.findBookBy("releaseDate", 2019);
+//library.findBookBy("releaseDate", 2019);
+//library.findBookBy("name", "Мурзилка"); //"Мурзилка"
 //console.log(library.findBookBy("name", "Властелин колец")); //null
-//console.log(library.findBookBy("releaseDate", 1924)); //"Мурзилка"
+console.log(library.findBookBy("releaseDate", 2019)); //"Мурзилка"
 //console.log(firstBook)
