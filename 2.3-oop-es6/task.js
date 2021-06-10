@@ -116,11 +116,11 @@ class Library extends PrintEditionItem {
 
       // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
       for (let i = 0; i < this.booksArr.length; i++) {
-        this.findBook=element
+        
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-          console.log(this.findBook);// ?Здесь находит книгу в библиотеке
+          console.log(element.name);// ?Здесь находит книгу в библиотеке
           
-          return this.findBook;//?Здесь undefined
+          return element;//?Здесь undefined
         } 
       }
 
