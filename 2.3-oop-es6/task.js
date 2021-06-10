@@ -118,16 +118,14 @@ class Library extends PrintEditionItem {
       for (let i = 0; i < this.booksArr.length; i++) {
         this.findBook=element
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-          console.log(element);// ?Здесь находит книгу в библиотеке
+          console.log(this.findBook);// ?Здесь находит книгу в библиотеке
           
           return this.findBook;//?Здесь undefined
-        } else{ 
-          console.log(null)
-          return null}
+        } 
       }
 
     });
-    return this.findBook
+    
   }
 
   giveBookByName(bookName) {}
@@ -155,6 +153,7 @@ library.addBook(new NovelBook("Герберт Уэллс", "Машина вре�
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 //library.findBookBy("releaseDate", 2019);
 //library.findBookBy("name", "Мурзилка"); //"Мурзилка"
-console.log(library.findBookBy("name", "Машина времени").name); 
+//console.log(library.findBookBy("name", "Машина времени")); 
 //console.log(library.findBookBy("releaseDate", 2019));
+ library.findBookBy("releaseDate", 2019);
 //console.log(firstBook)
