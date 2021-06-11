@@ -117,11 +117,11 @@ class Library extends PrintEditionItem {
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
          console.log (this.findeBook = this.books[index]) //Здесь выводит найенную книгу
         } else {
-          this.findeBook = null;// Не выводит при false
+          this.findeBook = null;//? Не выводит при false
         } 
       }
     });
-    return this.findeBook; // Здесь  выводит null
+    return this.findeBook; //? Здесь  выводит null
   }
 
   giveBookByName(bookName) {
