@@ -105,37 +105,24 @@ class Library extends PrintEditionItem {
       this.books.push(book);
     }
   }
-
   findBookBy(type, value) {
-    this.arr = [type, value]; // Определяем в массив ключ и значение из аргументов метода
-    // Перебераем массив библиотеки
-    this.books.map((element, index) => {
-      this.booksArr = Object.entries(element); // Переводим в массивы ключ и значение каждой книги в библиотеке.
-
-      // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
-      for (let i = 0; i < this.booksArr.length; i++) {
-        if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-         console.log (this.findeBook = this.books[index]) //Здесь выводит найенную книгу
-        } else {
-          this.findeBook = null;//? Не выводит при false
-        } 
+    for (const book of this.books) {
+      //console.log(book[type])
+      if (book[type] === value) {
+        return book;
       }
-    });
-    return this.findeBook; //? Здесь  выводит null
+    }
+    return null;
   }
 
   giveBookByName(bookName) {
-    this.nameBook = [bookName];
-    this.books.map((elem, index) => {
-      this.nameArr = [elem.name]; // Выводим в массив названия всех книг из библиотеки
-
-      if (this.nameArr.every((o) => this.nameBook.includes(o))) {
-        this.giveBook = this.books.splice(index, 1)[0]; //Удаляем из библиотеки выбранную книгу
-      } else {
-        this.giveBook = null;// Не выводит при false
-      } 
-    });
-    return this.giveBook;
+    for (const book of this.books) {
+      if (book.name === bookName) {
+        const index = this.books.findIndex((b) => b.name === bookName);
+        return this.books.splice(index, 1)[0];
+      }
+    }
+    return null;
   }
 }
 
@@ -161,8 +148,11 @@ library.addBook(new NovelBook("Герберт Уэллс", "Машина вре�
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 //library.findBookBy("releaseDate", 2019);
 //library.findBookBy("name", "Мурзилка"); //"Мурзилка"
-console.log(library.findBookBy("name", "Пикник на обочине"));
+//console.log(library.findBookBy("name", "Типовой школьный журнал"));
 //console.log(library.findBookBy("releaseDate", 2019));
 //library.findBookBy("releaseDate", 2019);
 //console.log(firstBook)
-console.log(library.giveBookByName("Машина времени"));
+//console.log(library.giveBookByName("Машина времени"));
+console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
+console.log(library.giveBookByName("Типовой школьный журнал"));
+console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
