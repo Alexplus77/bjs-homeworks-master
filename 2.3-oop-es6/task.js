@@ -126,15 +126,15 @@ class Library extends PrintEditionItem {
   giveBookByName(bookName) {
     this.nameBook = [bookName];    
     this.books.map((elem, index) => {
-      this.nameArr = [elem.name];
+      this.nameArr = [elem.name];// Выводим в массив названия всех книг из библиотеки
       //console.log(index)
       //console.log(elem)
       if (this.nameArr.every((o) => this.nameBook.includes(o))) {
        //console.log(index)
        console.log(this.books[index])
-    this.giveBook= this.books.splice(index, 1)
-     console.log(this.giveBook)
-        
+    this.giveBook= this.books.splice(index, 1)[0]//Удаляем из библиотеки выбранную книгу
+     console.log(this.giveBook) //Здесь выводит удаленную книгу
+        return this.giveBook//А вот здесь опять не выводит удаленный обьект 
       }
     });
   }
@@ -166,4 +166,4 @@ console.log(library.findBookBy("name", "Машина времени"));
 //console.log(library.findBookBy("releaseDate", 2019));
 //library.findBookBy("releaseDate", 2019);
 //console.log(firstBook)
-library.giveBookByName("Мурзилка");
+console.log(library.giveBookByName("Мурзилка"));
