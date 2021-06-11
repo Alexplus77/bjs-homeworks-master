@@ -115,13 +115,13 @@ class Library extends PrintEditionItem {
       // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
       for (let i = 0; i < this.booksArr.length; i++) {
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-          this.findeBook = this.books[index];
+         console.log (this.findeBook = this.books[index]) //Здесь выводит найенную книгу
         } else {
           this.findeBook = null;// Не выводит при false
         } 
       }
     });
-    return this.findeBook;
+    return this.findeBook; // Здесь  выводит null
   }
 
   giveBookByName(bookName) {
