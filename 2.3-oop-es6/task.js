@@ -115,28 +115,27 @@ class Library extends PrintEditionItem {
       // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
       for (let i = 0; i < this.booksArr.length; i++) {
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-          console.log(this.books[index]); // ?Здесь находит книгу в библиотеке
-
-          return this.books[index]; //?Здесь undefined
-        }
+          this.findeBook = this.books[index];
+        } else {
+          this.findeBook = null;// Не выводит при false
+        } 
       }
     });
+    return this.findeBook;
   }
 
   giveBookByName(bookName) {
-    this.nameBook = [bookName];    
+    this.nameBook = [bookName];
     this.books.map((elem, index) => {
-      this.nameArr = [elem.name];// Выводим в массив названия всех книг из библиотеки
-      //console.log(index)
-      //console.log(elem)
+      this.nameArr = [elem.name]; // Выводим в массив названия всех книг из библиотеки
+
       if (this.nameArr.every((o) => this.nameBook.includes(o))) {
-       //console.log(index)
-       console.log(this.books[index])
-    this.giveBook= this.books.splice(index, 1)[0]//Удаляем из библиотеки выбранную книгу
-     console.log(this.giveBook) //?Здесь выводит удаленную книгу
-        return this.giveBook//?А вот здесь опять не выводит удаленный обьект 
-      }
+        this.giveBook = this.books.splice(index, 1)[0]; //Удаляем из библиотеки выбранную книгу
+      } else {
+        this.giveBook = null;// Не выводит при false
+      } 
     });
+    return this.giveBook;
   }
 }
 
@@ -162,8 +161,8 @@ library.addBook(new NovelBook("Герберт Уэллс", "Машина вре�
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 //library.findBookBy("releaseDate", 2019);
 //library.findBookBy("name", "Мурзилка"); //"Мурзилка"
-console.log(library.findBookBy("name", "Машина времени"));
+console.log(library.findBookBy("name", "Пикник на обочине"));
 //console.log(library.findBookBy("releaseDate", 2019));
 //library.findBookBy("releaseDate", 2019);
 //console.log(firstBook)
-console.log(library.giveBookByName("Мурзилка"));
+console.log(library.giveBookByName("Машина времени"));
