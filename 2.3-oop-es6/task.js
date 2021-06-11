@@ -115,7 +115,7 @@ class Library extends PrintEditionItem {
       // Перебераем массив booksArr и проверяем содерит ли массив bookArr, ключ и значение массива arr
       for (let i = 0; i < this.booksArr.length; i++) {
         if (this.booksArr[i].every((o) => this.arr.includes(o))) {
-          console.log(this.books[index].name); // ?Здесь находит книгу в библиотеке
+          console.log(this.books[index]); // ?Здесь находит книгу в библиотеке
 
           return this.books[index]; //?Здесь undefined
         }
@@ -124,18 +124,16 @@ class Library extends PrintEditionItem {
   }
 
   giveBookByName(bookName) {
-    this.nameBook = [bookName];
-
-    this.bookName = [this.type, this.nameBook];
+    this.nameBook = [bookName];    
     this.books.map((elem, index) => {
       this.nameArr = [elem.name];
       //console.log(index)
       //console.log(elem)
       if (this.nameArr.every((o) => this.nameBook.includes(o))) {
-       console.log(index)
+       //console.log(index)
        console.log(this.books[index])
-        this.books.splice(index)
-        
+    this.giveBook= this.books.splice(index, 1)
+     console.log(this.giveBook)
         
       }
     });
