@@ -133,8 +133,8 @@ class Library extends PrintEditionItem {
        //console.log(index)
        console.log(this.books[index])
     this.giveBook= this.books.splice(index, 1)[0]//Удаляем из библиотеки выбранную книгу
-     console.log(this.giveBook) //Здесь выводит удаленную книгу
-        return this.giveBook//А вот здесь опять не выводит удаленный обьект 
+     console.log(this.giveBook) //?Здесь выводит удаленную книгу
+        return this.giveBook//?А вот здесь опять не выводит удаленный обьект 
       }
     });
   }
