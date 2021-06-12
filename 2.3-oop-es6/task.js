@@ -170,15 +170,15 @@ class StudentLog {
   }
   addGrade(grade, subject) {
     
-    const subjectGrade = { subject: subject, grade: [grade] };
+    const subjectGrade = { subject: subject, grade: [] };
     this.subjectAll.push(subjectGrade);
     const index = this.subjectAll.findIndex((s) => s.subject === subject);
     
     for (const subj of this.subjectAll) {      
         if(this.subjectAll[index].subject===subject){
         this.subjectAll[index].grade.push(grade)
-
-        return this.subjectAll[index]}       
+      
+        return this.subjectAll[index].grade.length}       
       
     }
   }
@@ -186,8 +186,4 @@ class StudentLog {
 
 const log = new StudentLog("Олег Никифоров");
 console.log(log.getName()); // Олег Никифоров
-console.log(log.addGrade(3, "algebra"));
-console.log(log.addGrade(5, "algebra"));
-console.log(log.addGrade(3, "algebra"));
-//console.log(log.addGrade(4, "algebra"));
-console.log(log.addGrade(5, "geometry"));
+
