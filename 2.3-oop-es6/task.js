@@ -169,21 +169,48 @@ class StudentLog {
     return this.name;
   }
   addGrade(grade, subject) {
-    
+    if (!Number(grade)) {
+      console.log(
+        `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`
+      );
+
+      return (grade = 0);
+    }
     const subjectGrade = { subject: subject, grade: [] };
     this.subjectAll.push(subjectGrade);
     const index = this.subjectAll.findIndex((s) => s.subject === subject);
-    
-    for (const subj of this.subjectAll) {      
-        if(this.subjectAll[index].subject===subject){
-        this.subjectAll[index].grade.push(grade)
-      
-        return this.subjectAll[index].grade.length}       
-      
+
+    for (const subj of this.subjectAll) {
+      if (this.subjectAll[index].subject === subject) {
+        if (grade < 1 || grade > 5) {
+          console.log(
+            `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`
+          );
+          return this.subjectAll[index].grade.length;
+        } else {
+          this.subjectAll[index].grade.push(grade);          
+          return  this.subjectAll[index].grade.length;
+        }
+      }
     }
   }
 }
 
 const log = new StudentLog("Олег Никифоров");
 console.log(log.getName()); // Олег Никифоров
+console.log(log.addGrade(3, "algebra"));
+// 1
 
+console.log(log.addGrade("отлично!", "math"));
+// Вы пытались поставить оценку "отлично!" по предмету "math". Допускаются только числа от 1 до 5.
+// 0
+
+console.log(log.addGrade(4, "algebra"));
+// 2
+
+console.log(log.addGrade(5, "geometry"));
+// 1
+
+console.log(log.addGrade(25, "geometry"));
+// Вы пытались поставить оценку "25" по предмету "geometry". Допускаются только числа от 1 до 5.
+// 1
