@@ -81,7 +81,7 @@ const detective = new DetectiveBook(
   256
 );
 
-magazine.state = 10;
+magazine.state = 1;
 //console.log(magazine.state)//10  новые журналы или испорченные
 magazine.fix();
 //console.log(magazine.state)//15 можно подклеить
@@ -147,12 +147,43 @@ library.addBook(
 library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 //library.findBookBy("releaseDate", 2019);
-//library.findBookBy("name", "Мурзилка"); //"Мурзилка"
+//console.log(library.findBookBy("name", "Мурзилка")); //"Мурзилка"
 //console.log(library.findBookBy("name", "Типовой школьный журнал"));
 //console.log(library.findBookBy("releaseDate", 2019));
 //library.findBookBy("releaseDate", 2019);
 //console.log(firstBook)
 //console.log(library.giveBookByName("Машина времени"));
-console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
-console.log(library.giveBookByName("Типовой школьный журнал"));
-console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
+//console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
+//console.log(library.giveBookByName("Типовой школьный журнал"));
+//console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
+
+//! Задача №3
+
+class StudentLog {
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+  addGrade(grade, subject) {
+    
+    const gradeSum = [];   
+      
+
+     if(gradeSum.length>0){
+       
+      gradeSum.push(grade);
+      const sum = gradeSum.length;
+      
+      console.log(gradeSum);
+      return sum}
+    
+  }
+}
+
+const log = new StudentLog("Олег Никифоров");
+console.log(log.getName()); // Олег Никифоров
+console.log(log.addGrade(3, "algebra"));
+console.log(log.addGrade(3, "algebra"));
+console.log(log.addGrade(5, 'geometry'));
