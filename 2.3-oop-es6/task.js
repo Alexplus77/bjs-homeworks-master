@@ -164,6 +164,7 @@ class StudentLog {
     this.name = name;
     this.gradeSum = []; 
       this.subjectSum =[]
+      this.subjectAll =[]
 
       
   }
@@ -171,14 +172,15 @@ class StudentLog {
     return this.name;
   }
   addGrade(grade, subject) {
-      this.subjectGrade={subject:subject,
+      const subjectGrade={subject:subject,
       grade:this.gradeSum}
     
       if(!this.subjectSum.includes(subject)){
         this.subjectSum.push(subject)
         this.gradeSum.push(grade)
+        this.subjectAll.push(subjectGrade)
         
-        console.log(this.subjectGrade)
+        console.log(this.subjectAll)
   }    
   
   
