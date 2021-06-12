@@ -169,15 +169,14 @@ class StudentLog {
   addGrade(grade, subject) {
     
     const gradeSum = [];   
-      const subjectSum =[]
-for(let i = 0; i<gradeSum.length; i++){
-     
-       
-      gradeSum.push(grade);
-      const sum = gradeSum.length;
-      
-      console.log(gradeSum);
-      return sum}
+      const subjectSum =[subject]
+      let i=1
+      i++
+if(gradeSum.length<i){
+  gradeSum.push(grade)
+  console.log(gradeSum)
+  
+}
     
   }
 }
