@@ -162,24 +162,29 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 class StudentLog {
   constructor(name) {
     this.name = name;
+    this.gradeSum = []; 
+      this.subjectSum =[]
   }
   getName() {
     return this.name;
   }
   addGrade(grade, subject) {
     
-    const gradeSum = [];   
-      const subjectSum =[subject]
-      let i=1
-      i++
-if(gradeSum.length<i){
-  gradeSum.push(grade)
-  console.log(gradeSum)
+      if(!this.subjectSum.includes(subject)){
+        this.subjectSum.push(subject)
+        console.log(this.subjectSum)  
+      
   
+  }            
+  this.gradeSum.push(grade)
+  
+  console.log(this.gradeSum)
+  
+
 }
     
   }
-}
+
 
 const log = new StudentLog("Олег Никифоров");
 console.log(log.getName()); // Олег Никифоров
