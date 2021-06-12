@@ -162,40 +162,44 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 class StudentLog {
   constructor(name) {
     this.name = name;
-    this.gradeSum = []; 
-      this.subjectSum =[]
-      this.subjectAll =[]
-
-      
+    this.gradeSum = [];
+    this.subjectSum = [];
+    this.subjectAll = [];
   }
   getName() {
     return this.name;
   }
   addGrade(grade, subject) {
-      const subjectGrade={subject:subject,
-      grade:this.gradeSum}
-    
-      if(!this.subjectSum.includes(subject)){
-        this.subjectSum.push(subject)
-        this.gradeSum.push(grade)
-        this.subjectAll.push(subjectGrade)
-        
-        console.log(this.subjectAll)
-  }    
-  
-  
-  
-  
- 
-  
+    const subjectGrade = { subject: subject, grade: this.gradeSum };
 
+    if (!this.subjectSum.includes(subject)) {
+      this.subjectSum.push(subject);
+
+      this.subjectAll.push(subjectGrade);
+for(const sub of this.subjectAll){
+if(sub.subject===subject){
+  const index = sub.findIndex((b) => b.subject === subject);
+  return sub[index]
+ }
+  
 }
-    
-  }
 
+      for (let i=0; i<this.subjectAll.length; i++) {
+        const subj=this.subjectAll[i]
+        if (subj.subject === subject) {
+
+          //subj.grade.push(grade)        
+
+          return subj[i]
+          //console.log(this.subjectAll);
+        }
+      }
+    }
+  }
+}
 
 const log = new StudentLog("Олег Никифоров");
 console.log(log.getName()); // Олег Никифоров
 console.log(log.addGrade(3, "algebra"));
 console.log(log.addGrade(3, "algebra"));
-console.log(log.addGrade(5, 'geometry'));
+console.log(log.addGrade(5, "geometry"));
