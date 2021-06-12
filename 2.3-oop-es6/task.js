@@ -169,9 +169,9 @@ class StudentLog {
   addGrade(grade, subject) {
     
     const gradeSum = [];   
-      
-
-     if(gradeSum.length>0){
+      const subjectSum =[]
+for(let i = 0; i<gradeSum.length; i++){
+     
        
       gradeSum.push(grade);
       const sum = gradeSum.length;
