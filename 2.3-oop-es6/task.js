@@ -188,29 +188,59 @@ class StudentLog {
           );
           return this.subjectAll[index].grade.length;
         } else {
-          this.subjectAll[index].grade.push(grade);          
-          return  this.subjectAll[index].grade.length;
+          this.subjectAll[index].grade.push(grade);
+          return this.subjectAll[index].grade.length;
         }
       }
     }
   }
+
+  getAverageBySubject(subject) {
+    const index = this.subjectAll.findIndex((s) => s.subject === subject);
+
+    for (const subjectOne of this.subjectAll) {
+      
+      
+      if (this.subjectAll[index] === undefined) {
+        return 0;
+      }
+      if (this.subjectAll[index].subject === subject) {
+        const lengthGrade = this.subjectAll[index].grade;
+        const sum =
+          lengthGrade.reduce((elem, acc) => elem + acc) /
+          this.subjectAll[index].grade.length;
+
+        return sum;
+      }
+    }    
+  }
 }
 
-const log = new StudentLog("Олег Никифоров");
-console.log(log.getName()); // Олег Никифоров
-console.log(log.addGrade(3, "algebra"));
+//const log = new StudentLog("Олег Никифоров");
+//console.log(log.getName()); // Олег Никифоров
+//console.log(log.addGrade(3, "algebra"));
 // 1
 
-console.log(log.addGrade("отлично!", "math"));
+//console.log(log.addGrade("отлично!", "math"));
 // Вы пытались поставить оценку "отлично!" по предмету "math". Допускаются только числа от 1 до 5.
 // 0
 
-console.log(log.addGrade(4, "algebra"));
+//console.log(log.addGrade(4, "algebra"));
 // 2
 
-console.log(log.addGrade(5, "geometry"));
+//console.log(log.addGrade(5, "geometry"));
 // 1
 
-console.log(log.addGrade(25, "geometry"));
+//console.log(log.addGrade(25, "geometry"));
 // Вы пытались поставить оценку "25" по предмету "geometry". Допускаются только числа от 1 до 5.
 // 1
+const log = new StudentLog('Олег Никифоров');
+
+log.addGrade(2, 'algebra');
+log.addGrade(4, 'algebra');
+log.addGrade(5, 'geometry');
+log.addGrade(4, 'geometry');
+
+console.log(log.getAverageBySubject('geometry')); // 4.5
+console.log(log.getAverageBySubject('algebra')); // 3
+console.log(log.getAverageBySubject('math')); // 0
