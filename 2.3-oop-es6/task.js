@@ -280,8 +280,9 @@ class StudentLog {
   
 
   addGrade(grade, subject) {
+    console.log(this.validate(grade))
     if (this.validate(grade)) {
-      return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`;
+      console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
     }
     this.totalGrades.push(grade);
     console.log(grade);
@@ -294,7 +295,7 @@ class StudentLog {
   }
 
   validate(grade) {
-    return !Number(grade) || grade>5
+    return !Number(grade) || grade<1 || grade>5 || grade===undefined
   }
 
   getAverageBySubject(subject) {
@@ -319,6 +320,12 @@ log.addGrade(2, "algebra");
 log.addGrade(4, "algebra");
 log.addGrade(5, "geometry");
 log.addGrade(4, "geometry");
+console.log(log.addGrade('отлично!', 'math'));
+// Вы пытались поставить оценку "отлично!" по предмету "math". Допускаются только числа от 1 до 5.
+// 0
+console.log(log.addGrade(25, 'geometry'));
+// Вы пытались поставить оценку "25" по предмету "geometry". Допускаются только числа от 1 до 5.
+// 1
 console.log(log.getAverageBySubject("geometry")); // 4.5
 console.log(log.getAverageBySubject("algebra")); // 3
 console.log(log.getAverageBySubject("math")); // 0
