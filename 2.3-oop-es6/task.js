@@ -281,6 +281,9 @@ class StudentLog {
   }
   addGrade(grade, subject)
    {
+
+
+
     this.totalAverage.push(grade);
     if (!Number(grade)) {
       console.log(
@@ -288,20 +291,23 @@ class StudentLog {
       );
 
       return (grade = 0);
+
+
+
     }
-    
-    this.subjects[subject]=this.grades
-    for(const sub of Object.keys( this.subjects)){
-      if(sub === subject){this.subjects[subject].push(grade)
-console.log(this.subjects)
+
+ this.subjects[subject]=this.grades
+
+    for(const sub of Object.keys(this.subjects)){
+      console.log(sub)
+if(sub===subject){
+  return this.subjects[subject].push(grade)
+}
+
     }
-    
-    
-    
-    }
-    
     
   }
+   
 
   getAverageBySubject(subject) {
     const index = this.subjectAll.findIndex((s) => s.subject === subject);
