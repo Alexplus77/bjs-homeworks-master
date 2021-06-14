@@ -291,10 +291,13 @@ class StudentLog {
     }
     
     this.subjects[subject]=this.grades
+    for(const sub of Object.keys( this.subjects)){
+      if(sub === subject){this.subjects[subject].push(grade)
+console.log(this.subjects)
+    }
     
-    if(this.subjects[subject]){this.subjects[subject].push(grade)
     
-    console.log(this.subjects)
+    
     }
     
     
