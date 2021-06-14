@@ -160,12 +160,12 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 //! Задача №3
 //! Вариант 1
 //class StudentLog {
-  // constructor(name) {
-   // this.name = name;
+// constructor(name) {
+// this.name = name;
 
-  //   this.subjectAll = [];
-  //   this.totalAverage = [];
-  // }
+//   this.subjectAll = [];
+//   this.totalAverage = [];
+// }
 //   getName() {
 //     return this.name;
 //   }
@@ -266,78 +266,61 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 
 //! Вариант 2
 
-console.log('Вариант 2')
+console.log("Вариант 2");
 
 class StudentLog {
   constructor(name) {
     this.name = name;
-       
-    this.subjects={}
-    this.grades =[]
-    this.totalAverage = [];
+    this.totalGrades = [];
+    this.subjects = {};
   }
   getName() {
     return this.name;
   }
-  addGrade(grade, subject)
-   {
+  
 
-
-
-    this.totalAverage.push(grade);
-    if (!Number(grade)) {
-      console.log(
-        `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`
-      );
-
-      return (grade = 0);
-
-
-
+  addGrade(grade, subject) {
+    if (this.validate(grade)) {
+      return `Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`;
     }
+    this.totalGrades.push(grade);
+    console.log(grade);
+    const currentSubject = this.subjects[subject] || [];
 
- this.subjects[subject]=this.grades
+    currentSubject.push(grade);
+    this.subjects[subject] = currentSubject;
 
-    for(const sub of Object.keys(this.subjects)){
-      console.log(sub)
-if(sub===subject){
-  return this.subjects[subject].push(grade)
-}
-
-    }
-    
+    return currentSubject.length;
   }
-   
+
+  validate(grade) {
+    return !Number(grade) || grade>5
+  }
 
   getAverageBySubject(subject) {
-    const index = this.subjectAll.findIndex((s) => s.subject === subject);
+    if (this.subjects[subject]) {
+      const average =
+        this.subjects[subject].reduce((acc, elem) => acc + elem) /
+        this.subjects[subject].length;
 
-    for (const subjectOne of this.subjectAll) {
-      if (this.subjectAll[index] === undefined) {
-        return 0;
-      }
-      if (this.subjectAll[index].subject === subject) {
-        const lengthGrade = this.subjectAll[index].grade;
-        const sum =
-          lengthGrade.reduce((elem, acc) => elem + acc) /
-          this.subjectAll[index].grade.length;
-
-        return sum;
-      }
+      return average;
     }
+    return 0;
   }
   getTotalAverage() {
-    const resultTotal =
-      this.totalAverage.reduce((acc, elem) => acc + elem) /
-      this.totalAverage.length;
-    if (isNaN(resultTotal)) {
-      return 0;
-    }
-    return resultTotal;
+    return (
+      this.totalGrades.reduce((acc, elem) => acc + elem) /
+      this.totalGrades.length
+    );
   }
 }
 const log = new StudentLog("Олег Никифоров");
 log.addGrade(2, "algebra");
- log.addGrade(4, "algebra");
- log.addGrade(5, "geometry");
- log.addGrade(4, "geometry");
+log.addGrade(4, "algebra");
+log.addGrade(5, "geometry");
+log.addGrade(4, "geometry");
+console.log(log.getAverageBySubject("geometry")); // 4.5
+console.log(log.getAverageBySubject("algebra")); // 3
+console.log(log.getAverageBySubject("math")); // 0
+
+console.log(log.getTotalAverage()); // 3,75
