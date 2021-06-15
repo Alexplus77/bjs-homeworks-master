@@ -278,24 +278,25 @@ class StudentLog {
     return this.name;
   }
   
-validate(grade, subject, currentSubject) {
+validate(grade, subject) {
     if( !Number(grade) ){
       console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
-      return 0
+      return !Number(grade)
     } else if(grade<1 || grade>5 || grade===undefined ){
       console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
-      return currentSubject.length
+      return grade<1 || grade>5 || grade===undefined 
     } 
       
   }
   addGrade(grade, subject) {
     
-    
+    if(this.validate(grade, subject)){return 0}
     this.totalGrades.push(grade);
     
     const currentSubject = this.subjects[subject] || [];
-if(this.validate(grade, subject, currentSubject)){return this.validate()}
-    currentSubject.push(grade);
+if(this.validate(grade)){return this.subjects[subject].length; }
+    currentSubject.push(grade, subject);
+    
     this.subjects[subject] = currentSubject;
  
 
