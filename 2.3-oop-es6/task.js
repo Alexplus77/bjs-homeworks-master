@@ -282,15 +282,17 @@ validate(grade, subject) {
     if( !Number(grade) ){
       console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
       return !Number(grade)
-    } else if(grade<1 || grade>5 || grade===undefined ){
+    } else if(grade<1 || grade>5 ){
       console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
-      return grade<1 || grade>5 || grade===undefined 
+      return grade<1 || grade>5 
     } 
       
   }
   addGrade(grade, subject) {
     
-    if(this.validate(grade, subject)){return 0}
+    if(this.validate(grade, subject)){
+      
+      return 0}
     this.totalGrades.push(grade);
     
     const currentSubject = this.subjects[subject] || [];
