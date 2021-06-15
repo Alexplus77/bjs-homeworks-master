@@ -278,25 +278,31 @@ class StudentLog {
     return this.name;
   }
   
-
-  addGrade(grade, subject) {
-    console.log(this.validate(grade))
-    if (this.validate(grade)) {
+validate(grade, subject, currentSubject) {
+    if( !Number(grade) ){
       console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
-    }
+      return 0
+    } else if(grade<1 || grade>5 || grade===undefined ){
+      console.log(`Вы пытались поставить оценку "${grade}" по предмету "${subject}". Допускаются только числа от 1 до 5.`);
+      return currentSubject.length
+    } 
+      
+  }
+  addGrade(grade, subject) {
+    
+    
     this.totalGrades.push(grade);
-    console.log(grade);
+    
     const currentSubject = this.subjects[subject] || [];
-
+if(this.validate(grade, subject, currentSubject)){return this.validate()}
     currentSubject.push(grade);
     this.subjects[subject] = currentSubject;
+ 
 
     return currentSubject.length;
   }
 
-  validate(grade) {
-    return !Number(grade) || grade<1 || grade>5 || grade===undefined
-  }
+  
 
   getAverageBySubject(subject) {
     if (this.subjects[subject]) {
