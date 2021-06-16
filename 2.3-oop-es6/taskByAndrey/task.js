@@ -137,11 +137,11 @@ class PhoneBook {
     }
   }
 
-  deleteContact(name, phone) {
+  deleteContact(name) {
     const users = Object.keys(this.phoneBook);
 
     for (const user of users) {
-      if (user === name || this.phoneBook[user] === phone) {
+      if (user === name ) {
         console.log(`Удаляем контакт с именем ${name}`);
         delete this.phoneBook[user];
                 return this.phoneBook;
@@ -152,8 +152,18 @@ class PhoneBook {
     }
   }
 
-  findContact(name, phone) {
+  findContact(name) {
+    const users = Object.entries(this.phoneBook);
 
+    for (const user of users) {
+       if(user[0] !== name )  { console.log(`Контакт с именем ${name} не существует`)
+    //return `Контакт с именем ${name} не существует`
+    }    else{
+       
+        console.log(`Найден контакт с именем ${name} и телефоном ${user[1]}`);       
+           return `${name}:  ${user[1]}`   
+    }
+    }
    
   }
 }
@@ -193,10 +203,10 @@ console.log(log.editContact("Alexey", "+79052430565", "Alex-Dentist")); // Ме�
 log.editContact("John", "Paul"); // Контакт не найден
 console.log(log.editContact("German", "+79052435855")); // Отредактировали телефон
 
-//log.findUser("German"); // телефон должен быть отредактирован
+console.log(log.findContact("German")); // телефон должен быть отредактирован
 
 console.log(log.deleteContact("Pavel")); // удаляет пользователя
-//console.log(log.findContact("Pavel")); // Контакт не найден - удалили его
+console.log(log.findContact("Pavel")); // Контакт не найден - удалили его
 
 log.deleteContact("Robert"); // Контакт не найден
 
