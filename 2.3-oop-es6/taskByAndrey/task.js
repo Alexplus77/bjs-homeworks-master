@@ -196,10 +196,10 @@ console.log(log.editContact("German", "+79052435855")); // Отредактир�
 //log.findUser("German"); // телефон должен быть отредактирован
 
 console.log(log.deleteContact("Pavel")); // удаляет пользователя
-console.log(log.findUser("Pavel")); // Контакт не найден - удалили его
+//console.log(log.findContact("Pavel")); // Контакт не найден - удалили его
 
-log.deleteUser("Robert"); // Контакт не найден
+log.deleteContact("Robert"); // Контакт не найден
 
-log.findUser("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-log.findUser(7905); // => все пользователи, у которых начинается телефон с этих цифр
-log.findUser("a"); // => Alexey, Andrey
+log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
+log.findContact(7905); // => все пользователи, у которых начинается телефон с этих цифр
+log.findContact("a"); // => Alexey, Andrey
