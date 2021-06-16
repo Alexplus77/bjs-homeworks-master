@@ -87,5 +87,119 @@ for (const obj of data) {
   const city = obj.city;
   townOfContry[country] = townOfContry[country] || [];
   townOfContry[country].push(city);
-  }
+}
 console.log(townOfContry);
+//! Задания по классам
+
+console.log("Задания по классам");
+class PhoneBook {
+  constructor() {
+    this.phoneBook = {}; // сам придумай архитектуру - в чем хранить контакты, чтобы легко их находить {} || [] ?;
+    
+  }
+
+  addContact(name, phone) {
+    const users = Object.keys(this.phoneBook);
+    for(const user of users){
+        if(user===name || this.phoneBook[user]===phone){
+            console.log(`Контакт с именем ${name} и телефоном ${phone} уже существует.`)
+    return 
+    }
+    }
+    this.phoneBook[name] = phone;
+    console.log("Добавили контакты");
+    return this.phoneBook;
+  }
+
+  editContact(name, phone, nameNew) {
+    if (isNaN(phone)) {
+      console.log(`Телефон контакта по имени ${name} не найден`);
+      return this.phoneBook;
+    }
+
+    const users = Object.keys(this.phoneBook);
+
+    for (const user of users) {
+      if (user !== nameNew && this.phoneBook[user] === phone) {
+        console.log(`Меняем имя ${user} на имя ${nameNew}`);
+        delete this.phoneBook[user];
+        this.phoneBook[nameNew] = phone;
+
+        return this.phoneBook;
+      }
+    }
+
+    if (this.phoneBook[name] !== phone) {
+      this.phoneBook[name] = phone;
+      console.log(`Поменяли телефон у контакта с именем ${name}`);
+
+      return this.phoneBook;
+    }
+  }
+
+  deleteContact(name, phone) {
+    const users = Object.keys(this.phoneBook);
+
+    for (const user of users) {
+      if (user ===name && this.phoneBook[user] === phone) {
+        console.log(`Удаляем контакт с именем ${name}`);
+        delete this.phoneBook[user];
+                return this.phoneBook;
+      } else{
+          console.log(`Контакт с именем ${name} не существует`)
+          return this.phoneBook
+      }
+    }
+  }
+
+  findContact(name, phone) {
+
+   
+  }
+}
+
+const log = new PhoneBook();
+
+/*
+ * Мы разрабатываем телефонный справочник со следующими методами:
+ *
+ * 1. Добавить контакт - метод принимает имя и телефон - добавляет контакт в тел. книгу (если один из параметров не передан - должна быть ошибка - передайте параметр ${phone}
+ * 2. Удалить контакт - удаляет контакт по имени или по номеру телефона
+ * 3. Отредактировать контакт - принимает имя, телефон редактирует либо имя, или телефон или сразу два параметра
+ * 4. Поиск - можно искать по номеру тел. или по имени - результат - объект с инфо о пользователе или пользователь не найден (если такого нет в тел. книге)
+ *
+ *
+ * Предусмотреть методы валидации:
+ * 1. Нельзя добавить контакт, который уже есть (выдать ошибку пользователь с таким именем уже сущестует ||  пользователь с таким телефоном уже есть в тел. книге
+ * 2. Нельзя удалить контакт, которого нет - выводим сообщение - Пользователь не найден.
+ * 3. Неполный поиск, к примеру у нас есть пять польователей, тел. которых начинаются одинаково (8905) - при таком запросе, поиск должен выдать всех этих пользователей
+ * 4. Неполный поиск по имени к примеру при поиске Ан - Мы должны получить результаты Андрей, Анатолий, Анна, и всех, польователей, у которых есть совпадения - но именно сначала!
+ *
+ * Твоя задача - придумать удобную структуру, самому продумать как будут хранится номера, пользователи, будут ли это объекты, или массивы - архитектура проекта на тебе!
+ * В примере я предложил хранить
+ *
+ * */
+
+// Примеры использования
+
+log.addContact("Alexey", "+79052430565"); // Добавляем контакт
+log.addContact("Pavel", "+790524358885"); // Добавляем контакт
+log.addContact("Alexey", "+79052430565"); // Контакт уже сущестует
+log.addContact("German", "+79052435877"); // Добавляем контакт
+log.addContact("Andrey", "+79052432545"); // Добавляем контакт
+console.log(log.addContact("Kseniya", "+79052439662")); // Добавляем контакт
+
+console.log(log.editContact("Alexey", "+79052430565", "Alex-Dentist")); // Меняет имя
+log.editContact("John", "Paul"); // Контакт не найден
+console.log(log.editContact("German", "+79052435855")); // Отредактировали телефон
+
+log.findUser("German"); // телефон должен быть отредактирован
+
+console.log(log.deleteUser("Pavel")); // удаляет пользователя
+console.log(log.findUser("Pavel")); // Контакт не найден - удалили его
+
+log.deleteUser("Robert"); // Контакт не найден
+
+log.findUser("Alexey"); // {'name': Alexy, phone: '+79052430565'}
+log.findUser(7905); // => все пользователи, у которых начинается телефон с этих цифр
+log.findUser("a"); // => Alexey, Andrey
