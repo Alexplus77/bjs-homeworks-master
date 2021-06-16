@@ -107,7 +107,7 @@ class PhoneBook {
     }
     }
     this.phoneBook[name] = phone;
-    console.log("Добавили контакты");
+    console.log(`Добавили контакты с именем ${name} и телефоном ${phone}`);
     return this.phoneBook;
   }
 
