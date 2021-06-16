@@ -141,7 +141,7 @@ class PhoneBook {
     const users = Object.keys(this.phoneBook);
 
     for (const user of users) {
-      if (user ===name && this.phoneBook[user] === phone) {
+      if (user === name || this.phoneBook[user] === phone) {
         console.log(`Удаляем контакт с именем ${name}`);
         delete this.phoneBook[user];
                 return this.phoneBook;
@@ -193,9 +193,9 @@ console.log(log.editContact("Alexey", "+79052430565", "Alex-Dentist")); // Ме�
 log.editContact("John", "Paul"); // Контакт не найден
 console.log(log.editContact("German", "+79052435855")); // Отредактировали телефон
 
-log.findUser("German"); // телефон должен быть отредактирован
+//log.findUser("German"); // телефон должен быть отредактирован
 
-console.log(log.deleteUser("Pavel")); // удаляет пользователя
+console.log(log.deleteContact("Pavel")); // удаляет пользователя
 console.log(log.findUser("Pavel")); // Контакт не найден - удалили его
 
 log.deleteUser("Robert"); // Контакт не найден
