@@ -87,5 +87,5 @@ for (const obj of data) {
   const city = obj.city;
   townOfContry[country] = townOfContry[country] || [];
   townOfContry[country].push(city);
-  console.log(townOfContry);
-}
+  }
+console.log(townOfContry);
