@@ -1,21 +1,18 @@
+//! Задача №1
+console.log("Задача №1");
+const str =
+  "abbcccddddeeeeefffffffffffggggggggggghhhhhhhhhhijkabcdfabcdfalexeyisaprogrammer";
 
-const str='abbcccddddeeeeefffffffffffggggggggggghhhhhhhhhhijkabcdfabcdfalexeyisaprogrammer'
+const obj = {};
 
-const letters= str.split('')
-const obj = {}
+function objectAdd() {
+  const letters = str.split("");
 
-function objectAdd(){
-
-for(const elem of letters){
-   const count = 1
-    if(elem){
-       obj[elem]=count+1   
-               
-    }    
-}
- 
-console.log(obj)
-
+  for (const letter of letters) {
+    obj[letter] = obj[letter] || 0;
+    obj[letter]++;
+  }
+  console.log(obj);
 }
 
-objectAdd()
+objectAdd();
