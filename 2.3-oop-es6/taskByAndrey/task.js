@@ -214,7 +214,7 @@ console.log("Задания по классам");
 // log.findContact(7905); // => все пользователи, у которых начинается телефон с этих цифр
 // log.findContact("a"); // => Alexey, Andrey
 
-//Вариант 2
+//!Вариант 2
 
 class PhoneBook {
   constructor() {
@@ -232,25 +232,66 @@ class PhoneBook {
       name: name,
       phone: phone,
     };
-
     this.phoneBook.push(users);
-    console.log(this.phoneBook);
+    //console.log(this.phoneBook);
   }
 
   editContact(name, phone, nameNew) {
-    if (!this.validation(name) || isNaN(phone)) {
-      console.log(`Контакт с именем ${name} не найден`);
-      return `Контакт с именем ${name} не найден`;
-    }
-  }
+    
+    for (const user of this.phoneBook) {
+      
+    if(user.name===name && user.phone !==phone && nameNew===undefined){
+user.phone=phone
+console.log(`Поменяли телефон ${name}`)
 
-  deleteContact(name, phone) {
-    // do your magic
-  }
+return this.phoneBook
+    }     
+    if (user.name === name || user.phone===phone) {           
+         user.name = nameNew;  
+            console.log(
+            `Поменяли контактактные данные пользователя с именем ${name} `                       
+        );
+console.log(this.phoneBook) 
+    return this.phoneBook
+    }      
+        }         
 
-  findContact(name, phone) {
-    // do your magic
+}
+
+  deleteContact(name) {
+   for(const user of this.phoneBook){ 
+    
+    
+if(user.name===name){
+  
+    delete user.name 
+           console.log(`Контакт с именем ${name} удален`)
+           return (`Контакт с именем ${name} удален`)
+} else{console.log(`Контакт с именем ${name} не найден`)
+
+ }
+
+   }
   }
+  findContact(name) {
+    if(!name){
+      console.log(`Укажите имя или телефон`)
+  return
+  }
+for(const user of this.phoneBook){
+  
+  
+if(user.name===name){
+  console.log(`Имя: ${user.name}, телефон: ${user.phone}`)
+  return
+} else if(Number(name) && user.phone===name){
+  console.log(`Имя: ${user.name}, телефон: ${user.phone}`)
+  return
+} 
+
+
+}
+}
 }
 
 const log = new PhoneBook();
@@ -284,17 +325,17 @@ log.addContact("German", "+79052435877"); // Добавляем контакт
 log.addContact("Andrey", "+79052432545"); // Добавляем контакт
 log.addContact("Kseniya", "+79052439662"); // Добавляем контакт
 
-log.editContact("Alexey", "+79052430565", "Alex-Dentist"); // Меняет имя
+log.editContact("Alexey" , "+79052430565","Alex-Dentist"); // Меняет имя
 log.editContact("John", "Paul"); // Контакт не найден
-log.editUser("German", "+79052435855"); // Отредактировали телефон
+log.editContact("German", "+79052435855"); // Отредактировали телефон
 
-log.findUser("German"); // телефон должен быть отредактирован
+log.findContact("German"); // телефон должен быть отредактирован
 
-log.deleteUser("Pavel"); // удаляет пользователя
-log.findUser("Pavel"); // Контакт не найден - удалили его
+log.deleteContact("Pavel"); // удаляет пользователя
+log.findContact("Pavel"); // Контакт не найден - удалили его
 
-log.deleteUser("Robert"); // Контакт не найден
+log.deleteContact("Robert"); // Контакт не найден
 
-log.findUser("Alexey"); // {'name': Alexy, phone: '+79052430565'}
+log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
 log.findUser(7905); // => все пользователи, у которых начинается телефон с этих цифр
 log.findUser("a"); // => Alexey, Andrey
