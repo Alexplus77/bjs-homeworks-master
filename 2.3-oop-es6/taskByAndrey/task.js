@@ -248,22 +248,19 @@ class PhoneBook {
         console.log(
           `Поменяли контактактные данные пользователя с именем ${name} `
         );
-        
+
         return this.phoneBook;
       }
     }
   }
 
   deleteContact(name) {
-this.phoneBook.splice(
-          this.phoneBook.findIndex((elem) => elem.name === name),
-          1
-)   
-  console.log(this.phoneBook)
-  return `Контакт с именем ${name} удален`;
-
-    
-    
+    this.phoneBook.splice(
+      this.phoneBook.findIndex((elem) => elem.name === name),
+      1
+    );
+    console.log(this.phoneBook);
+    return `Контакт с именем ${name} удален`;
   }
   findContact(name) {
     if (!name) {
@@ -273,17 +270,13 @@ this.phoneBook.splice(
     const nameLength = name.split("").length;
 
     for (const user of this.phoneBook) {
-      
       if (
         user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
-        user.phone.slice(0, nameLength) === name && (Number(name))
+        (user.phone.slice(0, nameLength) === name && Number(name))
       ) {
         console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-        
-        
       } else {
-        console.log(`Контакт ${name} не найден`)
-      
+        console.log(`Контакт ${name} не найден`);
       }
 
       // if (user.name === name) {
@@ -332,7 +325,7 @@ log.editContact("Alexey", "+79052430565", "Alex-Dentist"); // Меняет им�
 log.editContact("John", "Paul"); // Контакт не найден
 log.editContact("German", "+79052435855"); // Отредактировали телефон
 
- log.findContact("+79052430"); // телефон должен быть отредактирован
+log.findContact("+79052430"); // телефон должен быть отредактирован
 
 console.log(111, log.deleteContact("Kseniya")); // удаляет пользователя
 log.findContact("Pavel"); // Контакт не найден - удалили его
@@ -341,4 +334,4 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
 log.findContact("+7905"); // => все пользователи, у которых начинается телефон с этих цифр
- log.findContact("a"); // => Alexey, Andrey
+log.findContact("a"); // => Alexey, Andrey
