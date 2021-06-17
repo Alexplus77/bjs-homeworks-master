@@ -256,7 +256,7 @@ class PhoneBook {
 
   deleteContact(name) {
     const index = this.phoneBook.findIndex((elem) => elem.name === name);
-    if (index) {
+    if (index !== -1) {
       this.phoneBook.splice(index, 1);
       console.log(this.phoneBook);
       return `Контакт с именем ${name} удален`;
@@ -267,28 +267,24 @@ class PhoneBook {
   findContact(name) {
     if (!name) {
       console.log(`Укажите имя или телефон`);
-      return;
+      return `Укажите имя или телефон`;
     }
     const nameLength = name.split("").length;
+    const findArr = [];
 
     for (const user of this.phoneBook) {
+      const findObj = {
+        name: user.name,
+        phone: user.phone,
+      };
       if (
         user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
         (user.phone.slice(0, nameLength) === name && Number(name))
       ) {
-        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-      } else {
-        console.log(`Контакт ${name} не найден`);
+        findArr.push(findObj);
       }
-
-      // if (user.name === name) {
-      //   console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-      //   return;
-      // } else if (Number(name) && user.phone === name) {
-      //   console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-      //   return;
-      // }
     }
+    return findArr;
   }
 }
 
@@ -329,11 +325,11 @@ log.editContact("German", "+79052435855"); // Отредактировали т�
 
 log.findContact("+79052430"); // телефон должен быть отредактирован
 
-console.log(111, log.deleteContact("Kseniya")); // удаляет пользователя
+console.log(111, log.deleteContact("Kniya")); // удаляет пользователя
 log.findContact("Pavel"); // Контакт не найден - удалили его
 
 // log.deleteContact("Robert"); // Контакт не найден
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-log.findContact("+7905"); // => все пользователи, у которых начинается телефон с этих цифр
-log.findContact("a"); // => Alexey, Andrey
+console.log(log.findContact("+7905")); // => все пользователи, у которых начинается телефон с этих цифр
+console.log(log.findContact("g")); // => Alexey, Andrey
