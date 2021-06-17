@@ -232,8 +232,7 @@ class PhoneBook {
       name: name,
       phone: phone,
     };
-    this.phoneBook.push(users);
-    //console.log(this.phoneBook);
+    this.phoneBook.push(users);    
   }
 
   editContact(name, phone, nameNew) {
