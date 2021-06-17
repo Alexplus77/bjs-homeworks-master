@@ -232,7 +232,7 @@ class PhoneBook {
       name: name,
       phone: phone,
     };
-    this.phoneBook.push(users);    
+    this.phoneBook.push(users);
   }
 
   editContact(name, phone, nameNew) {
@@ -273,23 +273,24 @@ class PhoneBook {
       console.log(`Укажите имя или телефон`);
       return;
     }
+    const nameLength = name.split("").length;
+
     for (const user of this.phoneBook) {
       if (
-        user.name.toLowerCase().slice(0, 1) === name.toLowerCase() ||
-        user.phone.slice(1, 5) === name
+        user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
+        user.phone.slice(0, nameLength) === name && (Number(name))
       ) {
-        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);        
+        
       }
 
-      console.log();
-
-      if (user.name === name) {
-        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-        return;
-      } else if (Number(name) && user.phone === name) {
-        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
-        return;
-      }
+      // if (user.name === name) {
+      //   console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+      //   return;
+      // } else if (Number(name) && user.phone === name) {
+      //   console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+      //   return;
+      // }
     }
   }
 }
@@ -329,7 +330,7 @@ log.editContact("Alexey", "+79052430565", "Alex-Dentist"); // Меняет им�
 log.editContact("John", "Paul"); // Контакт не найден
 log.editContact("German", "+79052435855"); // Отредактировали телефон
 
-log.findContact("German"); // телефон должен быть отредактирован
+ log.findContact("+7905"); // телефон должен быть отредактирован
 
 log.deleteContact("Pavel"); // удаляет пользователя
 log.findContact("Pavel"); // Контакт не найден - удалили его
@@ -338,4 +339,4 @@ log.deleteContact("Robert"); // Контакт не найден
 
 log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
 log.findContact("7905"); // => все пользователи, у которых начинается телефон с этих цифр
-log.findContact("k"); // => Alexey, Andrey
+log.findContact("an"); // => Alexey, Andrey
