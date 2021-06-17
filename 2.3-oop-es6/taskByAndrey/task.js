@@ -248,7 +248,7 @@ class PhoneBook {
         console.log(
           `Поменяли контактактные данные пользователя с именем ${name} `
         );
-        console.log(this.phoneBook);
+        
         return this.phoneBook;
       }
     }
@@ -261,7 +261,8 @@ class PhoneBook {
           this.phoneBook.findIndex((elem) => elem.name === name),
           1
         );
-        console.log(`Контакт с именем ${name} удален`);
+        console.log(this.phoneBook)
+        //console.log(`Контакт с именем ${name} удален`);
         return `Контакт с именем ${name} удален`;
       } else {
         console.log(`Контакт с именем ${name} не найден`);
@@ -281,7 +282,8 @@ class PhoneBook {
         user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
         user.phone.slice(0, nameLength) === name && (Number(name))
       ) {
-        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);        
+        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+        
         
       } else {
         console.log(`Контакт ${name} не найден`)
@@ -336,7 +338,7 @@ log.editContact("German", "+79052435855"); // Отредактировали т�
 
  log.findContact("+79052430"); // телефон должен быть отредактирован
 
-log.deleteContact("Pavel"); // удаляет пользователя
+console.log(111, log.deleteContact("Pavel")); // удаляет пользователя
 log.findContact("Pavel"); // Контакт не найден - удалили его
 
 // log.deleteContact("Robert"); // Контакт не найден
