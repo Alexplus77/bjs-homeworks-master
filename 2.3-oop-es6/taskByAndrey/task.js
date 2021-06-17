@@ -255,19 +255,15 @@ class PhoneBook {
   }
 
   deleteContact(name) {
-    for (const user of this.phoneBook) {
-      if (user.name === name) {
-        this.phoneBook.splice(
+this.phoneBook.splice(
           this.phoneBook.findIndex((elem) => elem.name === name),
           1
-        );
-        console.log(this.phoneBook)
-        //console.log(`Контакт с именем ${name} удален`);
-        return `Контакт с именем ${name} удален`;
-      } else {
-        console.log(`Контакт с именем ${name} не найден`);
-      }
-    }
+)   
+  console.log(this.phoneBook)
+  return `Контакт с именем ${name} удален`;
+
+    
+    
   }
   findContact(name) {
     if (!name) {
