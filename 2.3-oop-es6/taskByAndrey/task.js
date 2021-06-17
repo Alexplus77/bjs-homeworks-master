@@ -275,6 +275,15 @@ class PhoneBook {
       return;
     }
     for (const user of this.phoneBook) {
+      if (
+        user.name.toLowerCase().slice(0, 1) === name.toLowerCase() ||
+        user.phone.slice(1, 5) === name
+      ) {
+        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+      }
+
+      console.log();
+
       if (user.name === name) {
         console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
         return;
@@ -329,5 +338,5 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 log.deleteContact("Robert"); // Контакт не найден
 
 log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-log.findUser(7905); // => все пользователи, у которых начинается телефон с этих цифр
-log.findUser("a"); // => Alexey, Andrey
+log.findContact("7905"); // => все пользователи, у которых начинается телефон с этих цифр
+log.findContact("k"); // => Alexey, Andrey
