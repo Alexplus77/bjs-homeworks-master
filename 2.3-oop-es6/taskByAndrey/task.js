@@ -237,61 +237,51 @@ class PhoneBook {
   }
 
   editContact(name, phone, nameNew) {
-    
     for (const user of this.phoneBook) {
-      
-    if(user.name===name && user.phone !==phone && nameNew===undefined){
-user.phone=phone
-console.log(`Поменяли телефон ${name}`)
+      if (user.name === name && user.phone !== phone && nameNew === undefined) {
+        user.phone = phone;
+        console.log(`Поменяли телефон ${name}`);
 
-return this.phoneBook
-    }     
-    if (user.name === name || user.phone===phone) {           
-         user.name = nameNew;  
-            console.log(
-            `Поменяли контактактные данные пользователя с именем ${name} `                       
+        return this.phoneBook;
+      }
+      if (user.name === name || user.phone === phone) {
+        user.name = nameNew;
+        console.log(
+          `Поменяли контактактные данные пользователя с именем ${name} `
         );
-console.log(this.phoneBook) 
-    return this.phoneBook
-    }      
-        }         
-
-}
+        console.log(this.phoneBook);
+        return this.phoneBook;
+      }
+    }
+  }
 
   deleteContact(name) {
-   for(const user of this.phoneBook){ 
-    
-    
-if(user.name===name){
-  
-    delete user.name 
-           console.log(`Контакт с именем ${name} удален`)
-           return (`Контакт с именем ${name} удален`)
-} else{console.log(`Контакт с именем ${name} не найден`)
-
- }
-
-   }
+    for (const user of this.phoneBook) {
+      if (user.name === name) {
+        delete user.name;
+        delete user.phone
+        console.log(`Контакт с именем ${name} удален`);
+        return `Контакт с именем ${name} удален`;
+      } else {
+        console.log(`Контакт с именем ${name} не найден`);
+      }
+    }
   }
   findContact(name) {
-    if(!name){
-      console.log(`Укажите имя или телефон`)
-  return
+    if (!name) {
+      console.log(`Укажите имя или телефон`);
+      return;
+    }
+    for (const user of this.phoneBook) {
+      if (user.name === name) {
+        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+        return;
+      } else if (Number(name) && user.phone === name) {
+        console.log(`Имя: ${user.name}, телефон: ${user.phone}`);
+        return;
+      }
+    }
   }
-for(const user of this.phoneBook){
-  
-  
-if(user.name===name){
-  console.log(`Имя: ${user.name}, телефон: ${user.phone}`)
-  return
-} else if(Number(name) && user.phone===name){
-  console.log(`Имя: ${user.name}, телефон: ${user.phone}`)
-  return
-} 
-
-
-}
-}
 }
 
 const log = new PhoneBook();
@@ -325,7 +315,7 @@ log.addContact("German", "+79052435877"); // Добавляем контакт
 log.addContact("Andrey", "+79052432545"); // Добавляем контакт
 log.addContact("Kseniya", "+79052439662"); // Добавляем контакт
 
-log.editContact("Alexey" , "+79052430565","Alex-Dentist"); // Меняет имя
+log.editContact("Alexey", "+79052430565", "Alex-Dentist"); // Меняет имя
 log.editContact("John", "Paul"); // Контакт не найден
 log.editContact("German", "+79052435855"); // Отредактировали телефон
 
