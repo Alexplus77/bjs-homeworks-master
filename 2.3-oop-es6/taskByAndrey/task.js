@@ -266,11 +266,18 @@ class PhoneBook {
     }
   }
   //! Вариант 1 метода поиска
+
+
+  getIsFound(name) {
+    if (Number(name)) {
+      contact.phone.startsWith(name)
+    }
+  }
   findContact(name) {
     const findContact = this.phoneBook.filter(
       (contact) =>
         contact.name.toLowerCase().startsWith(name) ||
-        contact.phone.startsWith(name)
+        
     );
     if (findContact.length) {
       return findContact;
