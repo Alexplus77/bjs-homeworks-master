@@ -259,33 +259,53 @@ class PhoneBook {
     if (index !== -1) {
       this.phoneBook.splice(index, 1);
       console.log(this.phoneBook);
+
       return `Контакт с именем ${name} удален`;
     } else {
       return `Контактa с именем ${name} нет`;
     }
   }
+  //! Вариант 1 метода поиска
   findContact(name) {
-    if (!name) {
-      console.log(`Укажите имя или телефон`);
-      return `Укажите имя или телефон`;
+    const findContact = this.phoneBook.filter(
+      (contact) =>
+        contact.name.toLowerCase().startsWith(name) ||
+        contact.phone.startsWith(name)
+    );
+    if (findContact.length) {
+      return findContact;
+    } else {
+      return `Контакт ${name} не найден.`;
     }
-    const nameLength = name.split("").length;
-    const findArr = [];
-
-    for (const user of this.phoneBook) {
-      const findObj = {
-        name: user.name,
-        phone: user.phone,
-      };
-      if (
-        user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
-        (user.phone.slice(0, nameLength) === name && Number(name))
-      ) {
-        findArr.push(findObj);
-      }
-    }
-    return findArr;
   }
+
+  //! Вариант 2 метода
+  // findContact(name) {
+  //   if (!name) {
+  //     console.log(`Укажите имя или телефон`);
+  //     return `Укажите имя или телефон`;
+  //   }
+  //   const nameLength = name.split("").length;
+  //   const findArr = [];
+
+  //   for (const user of this.phoneBook) {
+  //     const findObj = {
+  //       name: user.name,
+  //       phone: user.phone,
+  //     };
+  //     if (
+  //       user.name.toLowerCase().slice(0, nameLength) === name.toLowerCase() ||
+  //       (user.phone.slice(0, nameLength) === name && Number(name))
+  //     ) {
+  //       findArr.push(findObj);
+  //     }
+  //   }
+  //   if (findArr.length) {
+  //     return findArr;
+  //   } else {
+  //     return `Контакт с именем ${name} не найден.`
+  //   }
+  // }
 }
 
 const log = new PhoneBook();
@@ -325,11 +345,11 @@ log.editContact("German", "+79052435855"); // Отредактировали т�
 
 log.findContact("+79052430"); // телефон должен быть отредактирован
 
-console.log(111, log.deleteContact("Kniya")); // удаляет пользователя
+console.log(111, log.deleteContact("Pavel")); // удаляет пользователя
 log.findContact("Pavel"); // Контакт не найден - удалили его
 
 // log.deleteContact("Robert"); // Контакт не найден
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
 console.log(log.findContact("+7905")); // => все пользователи, у которых начинается телефон с этих цифр
-console.log(log.findContact("g")); // => Alexey, Andrey
+console.log(log.findContact("a")); // => Alexey, Andrey
