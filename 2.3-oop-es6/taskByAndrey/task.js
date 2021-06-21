@@ -268,22 +268,32 @@ class PhoneBook {
   //! Вариант 1 метода поиска
 
 
-  getIsFound(name) {
-    if (Number(name)) {
-      contact.phone.startsWith(name)
-    }
-  }
-  findContact(name) {
-    const findContact = this.phoneBook.filter(
-      (contact) =>
-        contact.name.toLowerCase().startsWith(name) ||
-        
-    );
-    if (findContact.length) {
-      return findContact;
+  getIsFound(search, name) {
+    const arg = [search]
+    
+    for (const seachParam in arg) {
+      console.log(seachParam)
+           if (Number(search)) {
+     return seachParam.startsWith(search);
     } else {
-      return `Контакт ${name} не найден.`;
+    return  seachParam.toLowerCase().startsWith(search)
     }
+    }
+    
+  }
+  findContact(search) {
+    
+    const findContact = this.phoneBook.filter(
+      (contact) => this.getIsFound(search)
+
+      //    contact.name.toLowerCase().startsWith(search) ||
+      //  contact.phone.startsWith(search)
+    );
+    // if (findContact.length) {
+    //   return findContact;
+    // } else {
+    //   return `Контакт ${searchParam} не найден.`;
+    // }
   }
 
   //! Вариант 2 метода
