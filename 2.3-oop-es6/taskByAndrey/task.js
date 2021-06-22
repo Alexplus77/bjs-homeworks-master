@@ -1,3 +1,12 @@
+const num = [1, 3, 6, 1, 100, 5];
+let count = 1;
+for (const elem of num) {
+ 
+  if (count < elem) {
+    console.log(num[count++]);
+  }
+}
+
 //! Задача №1
 console.log("Задача №1");
 const str =
@@ -272,11 +281,11 @@ class PhoneBook {
 
     for (const seachParam of arg) {
       if (search) {
-         return seachParam.toLowerCase().startsWith(search);
-      } 
+        return seachParam.toLowerCase().startsWith(search);
+      }
     }
   }
-  findContact() {
+  findContact(search) {
     const findContact = this.phoneBook.filter(
       (contact) => this.getIsFound(search, contact)
 
@@ -362,5 +371,5 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 // log.deleteContact("Robert"); // Контакт не найден
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-console.log(log.getIsFound("+79052430")); // => все пользователи, у которых начинается телефон с этих цифр
+console.log(log.findContact("+79052430")); // => все пользователи, у которых начинается телефон с этих цифр
 console.log(log.findContact("a")); // => Alexey, Andrey
