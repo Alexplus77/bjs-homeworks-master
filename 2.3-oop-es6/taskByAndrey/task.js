@@ -371,17 +371,20 @@ console.log(log.findContact("a")); // => Alexey, Andrey
 
 console.log("Задача на поиск наибольшего числа в массиве");
 
-const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 3, 2, 4, 44, 55, 34, 21]
+const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 3966666, 2, 4, 44, 55, 3499999, 21]
+const a =[]
 let i = 0;
 
+function f1() {
+  
+const result = arr.filter((elem) => elem > arr[i]);
+   return result
+  
+  
  
-  for (const num of arr) {
-    i+1
-    if (num > arr[i]) {
-    console.log( num);
-    } 
-    
-  } 
+  
+}
+console.log(f1())
 
 
 
