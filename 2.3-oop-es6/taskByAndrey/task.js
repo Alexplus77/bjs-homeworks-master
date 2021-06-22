@@ -268,15 +268,15 @@ class PhoneBook {
   //! Вариант 1 метода поиска
 
 
-  getIsFound(search, name) {
+  getIsFound(search) {
     const arg = [search]
-    
-    for (const seachParam in arg) {
-      console.log(seachParam)
-           if (Number(search)) {
-     return seachParam.startsWith(search);
+     
+    for (const seachParam of arg) {
+     
+           if (Number(search) ) {
+     return seachParam.startsWith(search)
     } else {
-    return  seachParam.toLowerCase().startsWith(search)
+    return seachParam.toLowerCase().startsWith(search)
     }
     }
     
@@ -284,16 +284,22 @@ class PhoneBook {
   findContact(search) {
     
     const findContact = this.phoneBook.filter(
-      (contact) => this.getIsFound(search)
+      (contact) => {
+        if (this.getIsFound(search)) {
+          
+          return contact
+        }
+
+      } 
 
       //    contact.name.toLowerCase().startsWith(search) ||
       //  contact.phone.startsWith(search)
     );
-    // if (findContact.length) {
-    //   return findContact;
-    // } else {
-    //   return `Контакт ${searchParam} не найден.`;
-    // }
+     if (findContact.length) {
+      return findContact;
+     } else {
+       return `Контакт ${search} не найден.`;
+    }
   }
 
   //! Вариант 2 метода
