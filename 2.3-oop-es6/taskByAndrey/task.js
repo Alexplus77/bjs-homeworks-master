@@ -373,7 +373,7 @@ console.log("Задача на поиск наибольшего числа в �
 
 const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 3, 2, 4, 44, 55, 34, 21]
 let i = 0;
-function f1() {
+function f1(arr) {
  
   for (const num of arr) {
     i+1
@@ -383,4 +383,7 @@ function f1() {
     
   }
 }
-console.log(f1())
+console.log(f1(arr))
+
+
+  
