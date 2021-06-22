@@ -365,4 +365,22 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
 console.log(log.findContact("+790524396")); // => все пользователи, у которых начинается телефон с этих цифр
-console.log(log.findContact("")); // => Alexey, Andrey
+console.log(log.findContact("a")); // => Alexey, Andrey
+
+//!Задача на поиск наибольшего числа в массиве
+
+console.log("Задача на поиск наибольшего числа в массиве");
+
+const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 3, 2, 4, 44, 55, 34, 21]
+let i = 0;
+function f1() {
+ 
+  for (const num of arr) {
+    i+1
+    if (num > arr[i]) {
+  return num
+}
+    
+  }
+}
+console.log(f1())
