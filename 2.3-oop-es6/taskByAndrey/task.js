@@ -267,38 +267,26 @@ class PhoneBook {
   }
   //! Вариант 1 метода поиска
 
+  getIsFound(search, contact) {
+    const arg = [search];
 
-  getIsFound(search) {
-    const arg = [search]
-     
     for (const seachParam of arg) {
-     
-           if (Number(search) ) {
-     return seachParam.startsWith(search)
-    } else {
-    return seachParam.toLowerCase().startsWith(search)
-    }
-    }
-    
-  }
-  findContact(search) {
-    
-    const findContact = this.phoneBook.filter(
-      (contact) => {
-        if (this.getIsFound(search)) {
-          
-          return contact
-        }
-
+      if (search) {
+         return seachParam.toLowerCase().startsWith(search);
       } 
+    }
+  }
+  findContact() {
+    const findContact = this.phoneBook.filter(
+      (contact) => this.getIsFound(search, contact)
 
       //    contact.name.toLowerCase().startsWith(search) ||
       //  contact.phone.startsWith(search)
     );
-     if (findContact.length) {
+    if (findContact.length) {
       return findContact;
-     } else {
-       return `Контакт ${search} не найден.`;
+    } else {
+      return `Контакт ${search} не найден.`;
     }
   }
 
@@ -374,5 +362,5 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 // log.deleteContact("Robert"); // Контакт не найден
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-console.log(log.findContact("+7905")); // => все пользователи, у которых начинается телефон с этих цифр
+console.log(log.getIsFound("+79052430")); // => все пользователи, у которых начинается телефон с этих цифр
 console.log(log.findContact("a")); // => Alexey, Andrey
