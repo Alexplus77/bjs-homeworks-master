@@ -1,11 +1,5 @@
-const num = [1, 3, 6, 1, 100, 5];
-let count = 1;
-for (const elem of num) {
- 
-  if (count < elem) {
-    console.log(num[count++]);
-  }
-}
+
+
 
 //! Задача №1
 console.log("Задача №1");
