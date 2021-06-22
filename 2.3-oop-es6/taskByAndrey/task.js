@@ -1,6 +1,3 @@
-
-
-
 //! Задача №1
 console.log("Задача №1");
 const str =
@@ -271,26 +268,23 @@ class PhoneBook {
   //! Вариант 1 метода поиска
 
   getIsFound(search, contact) {
-    const arg = [search];
-  //console.log(search, contact)
-    
-
-    for (const seachParam of arg) {
-      if (search) {
-        
-        return (
-          contact.name.toLowerCase().startsWith(search)
-        );
-      }
+    for (const seachParam in contact) {
+     
+      if (contact[seachParam].toLowerCase() === search) {
+        return true;
+      } else if (
+        contact[seachParam].toLowerCase().startsWith(search.toLowerCase())
+      ) {
+        return true;
+      }      
     }
+    return false;
   }
   findContact(search) {
     const findContact = this.phoneBook.filter(
-      (contact) => this.getIsFound(search, contact)
-
-      //    contact.name.toLowerCase().startsWith(search) ||
-      //  contact.phone.startsWith(search)
+      (contact) => this.getIsFound(search, contact)      
     );
+    
     if (findContact.length) {
       return findContact;
     } else {
@@ -370,5 +364,5 @@ log.findContact("Pavel"); // Контакт не найден - удалили �
 // log.deleteContact("Robert"); // Контакт не найден
 
 // log.findContact("Alexey"); // {'name': Alexy, phone: '+79052430565'}
-console.log(log.findContact("+79052430")); // => все пользователи, у которых начинается телефон с этих цифр
-console.log(log.findContact("a")); // => Alexey, Andrey
+console.log(log.findContact("+790524396")); // => все пользователи, у которых начинается телефон с этих цифр
+console.log(log.findContact("")); // => Alexey, Andrey
