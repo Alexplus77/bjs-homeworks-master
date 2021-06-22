@@ -377,10 +377,12 @@ let i = 0;
 
 function f1() {
   
-const result = arr.filter((elem) => elem > arr[i]);
-   return result
-  
-  
+  for (const num of arr) {
+    i+1
+    if (num > arr[i]){
+      return num
+      }
+  }
  
   
 }
