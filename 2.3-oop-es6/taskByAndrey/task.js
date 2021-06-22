@@ -269,22 +269,21 @@ class PhoneBook {
 
   getIsFound(search, contact) {
     for (const seachParam in contact) {
-     
       if (contact[seachParam].toLowerCase() === search) {
         return true;
       } else if (
         contact[seachParam].toLowerCase().startsWith(search.toLowerCase())
       ) {
         return true;
-      }      
+      }
     }
     return false;
   }
   findContact(search) {
-    const findContact = this.phoneBook.filter(
-      (contact) => this.getIsFound(search, contact)      
+    const findContact = this.phoneBook.filter((contact) =>
+      this.getIsFound(search, contact)
     );
-    
+
     if (findContact.length) {
       return findContact;
     } else {
@@ -371,25 +370,19 @@ console.log(log.findContact("a")); // => Alexey, Andrey
 
 console.log("Задача на поиск наибольшего числа в массиве");
 
-const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 3966666, 2, 4, 44, 55, 3499999, 21]
-
+const arr = [
+  111, 1, 2, 3, 4, 99999, 0, -999, 5, 396, 2, 4, 44, 55, 3499999, 21,
+];
+let result = 0;
 let i = 0;
 
 function f1() {
-  
   for (const num of arr) {
-    i+1
-    if (num > arr[i]){
-      return num
-      }
+    i + 1;
+    if (num > arr[i]) {
+      result = num;
+    }
   }
- 
-  
+  return result;
 }
-console.log(f1())
-
-
-
-
-
-  
+console.log(f1());
