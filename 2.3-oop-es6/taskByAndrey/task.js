@@ -272,10 +272,15 @@ class PhoneBook {
 
   getIsFound(search, contact) {
     const arg = [search];
+  //console.log(search, contact)
+    
 
     for (const seachParam of arg) {
       if (search) {
-        return seachParam.toLowerCase().startsWith(search);
+        
+        return (
+          contact.name.toLowerCase().startsWith(search)
+        );
       }
     }
   }
