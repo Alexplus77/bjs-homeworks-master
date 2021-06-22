@@ -377,12 +377,14 @@ let result=0
 
 
 function f1() {
-  for (const num of arr) {
+result=Math.max.apply(null, arr)
+
+  // for (const num of arr) {
     
-    if (num > result) {
-      result = num;
-    }
-  }
+  //   if (num > result) {
+  //     result = num;
+  //   }
+  // }
   return result;
 }
 console.log(f1());
