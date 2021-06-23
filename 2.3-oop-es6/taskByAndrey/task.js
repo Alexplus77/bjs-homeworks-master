@@ -370,15 +370,13 @@ console.log(log.findContact("a")); // => Alexey, Andrey
 
 console.log("Задача на поиск наибольшего числа в массиве");
 
-const arr = [
-  111, 1, 2, 3, 4, 99999999, 0, -999, 5, 396, 2, 4, 44, 55, 349999988888, 21,
-];
+const arr = [111, 1, 2, 3, 4, 99999, 0, -999, 5, 396, 2, 4, 44, 55, 349999, 21];
 
 function f1() {
-result=Math.max.apply(null, arr)
-
+  let result = Math.max.apply( null, arr);
+  //let result=0
   // for (const num of arr) {
-    
+
   //   if (num > result) {
   //     result = num;
   //   }
@@ -386,3 +384,20 @@ result=Math.max.apply(null, arr)
   return result;
 }
 console.log(f1());
+
+//! Задание на разделение логики
+
+console.log("Задание на разделение логики");
+// ожидаем получить [12, 14, 30, 18]
+const arrNew = [1, 1000, 'not a number', true, false, 10, ['a', 'b'], 33, 45, {}, 77, 12, 14, 25, 30, 18]; 
+
+const result=arrNew.filter((number) =>filterByRules(number));
+console.log(result)
+function filterByRules(number) {
+  
+  if (Number(number) && !(number%2) && number>10 && number<50) {
+    
+return number
+
+  } 
+}
