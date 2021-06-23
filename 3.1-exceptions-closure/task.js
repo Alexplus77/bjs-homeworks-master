@@ -44,15 +44,16 @@ class Triangle {
   }
 }
 function getTriangle(a, b, c) {
+    const messadge =  "Ошибка! Треугольник не существует";
   try {
     return new Triangle(a, b, c);
   } catch {
     return {
       getArea() {
-        return "Ошибка! Треугольник не существует";
+        return messadge
       },
       getPerimeter() {
-        return "Ошибка! Треугольник не существует";
+        return messadge
       },
     };
   }
