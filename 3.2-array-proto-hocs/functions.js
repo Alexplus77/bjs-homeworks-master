@@ -7,7 +7,7 @@ const weapons = [
   new LongBow(),
   new Bow(),
 ];
-console.clear();
+
 console.log(weapons.map((elem) => elem));
 function getNames() {
   const arr = weapons.map((elem) => elem.name);
@@ -15,5 +15,5 @@ function getNames() {
 }
 
 function getCountReliableWeapons(durability) {
-  return  weapons.filter(elem=>elem>durability)
+  return weapons.filter((elem) => elem.durability > durability).length;
 }
