@@ -17,3 +17,15 @@ function getNames() {
 function getCountReliableWeapons(durability) {
   return weapons.filter((elem) => elem.durability > durability).length;
 }
+
+function hasReliableWeapons(durability) {
+  return weapons.some((elem) => elem.durability > durability);
+}
+
+function getReliableWeaponsNames(durability) {
+    return weapons.filter((elem) => elem.durability > durability).map(elem=> elem.name)    
+}
+
+
+
+
