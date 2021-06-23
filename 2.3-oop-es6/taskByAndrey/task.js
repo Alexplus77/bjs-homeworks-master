@@ -391,8 +391,10 @@ console.log("Задание на разделение логики");
 // ожидаем получить [12, 14, 30, 18]
 const arrNew = [1, 1000, 'not a number', true, false, 10, ['a', 'b'], 33, 45, {}, 77, 12, 14, 25, 30, 18]; 
 
-const result=arrNew.filter((number) =>filterByRules(number));
+const result = arrNew.filter((number) => filterByRules(number));
+
 console.log(result)
+
 function filterByRules(number) {
   
   if (Number(number) && !(number%2) && number>10 && number<50) {
