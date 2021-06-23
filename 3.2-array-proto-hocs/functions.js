@@ -1,3 +1,4 @@
+//! Задача №1
 console.clear();
 const weapons = [
   new Knife(),
@@ -23,9 +24,11 @@ function hasReliableWeapons(durability) {
 }
 
 function getReliableWeaponsNames(durability) {
-    return weapons.filter((elem) => elem.durability > durability).map(elem=> elem.name)    
+  return weapons
+    .filter((elem) => elem.durability > durability)
+    .map((elem) => elem.name);
 }
 
-
-
-
+function getTotalDamage() {
+  return weapons.map((elem) => elem.attack).reduce((elem, acc) => elem + acc);
+}
