@@ -34,20 +34,17 @@ function getTotalDamage() {
 }
 
 function getValuestCountToSumValues(arr, sum) {
- let sumNum=0
-  let arrNum = []
+  let sumNum = 0;
+  let arrNum = [];
   arr.forEach((elem) => {
-      
-      sumNum = elem + sumNum
-      let d = sumNum - sum
-      
-     if (d >0 && d<elem ) {      
-       arrNum.push(elem)       
+    sumNum = elem + sumNum;
+    let d = sumNum - sum;
+
+    if (sumNum === sum || d <= elem) {
+      arrNum.push(elem);
     }
-    
-    })
-  console.log(arrNum)
- 
+  });
+  console.log(arrNum);
 }
 
 getValuestCountToSumValues([1, 2, 3, 5, 2, 7, 3, 5, 2], 10);
