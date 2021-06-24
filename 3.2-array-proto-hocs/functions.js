@@ -32,7 +32,7 @@ function getReliableWeaponsNames(durability) {
 function getTotalDamage() {
   return weapons.map((elem) => elem.attack).reduce((elem, acc) => elem + acc);
 }
-
+//! Функция со звездочкой
 function getValuestCountToSumValues(arr, sum) {
   let sumNum = 0;
   let arrNum = [];
@@ -40,11 +40,12 @@ function getValuestCountToSumValues(arr, sum) {
     sumNum = elem + sumNum;
     let d = sumNum - sum;
 
-    if (sumNum === sum || d <= elem) {
+    if (sumNum === sum || d < elem) {
       arrNum.push(elem);
+    } else {
+      return arrNum.length;
     }
   });
-  console.log(arrNum);
+  return arrNum.length;
 }
-
-getValuestCountToSumValues([1, 2, 3, 5, 2, 7, 3, 5, 2], 10);
+console.log(getValuestCountToSumValues([1, 2, 3, 5, 2, 7, 3, 5, 2], 20));
