@@ -25,8 +25,8 @@ function hasReliableWeapons(durability) {
 
 function getReliableWeaponsNames(durability) {
   return weapons.reduce((acc, elem) => {
-    
-      return [...acc, ...elem.name]
+    if (elem.durability > durability)
+    { return [...acc].push(elem.name) };
    
   })
     // .filter((elem) => elem.durability > durability)
