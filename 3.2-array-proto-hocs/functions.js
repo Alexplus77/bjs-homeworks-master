@@ -24,13 +24,20 @@ function hasReliableWeapons(durability) {
 }
 
 function getReliableWeaponsNames(durability) {
-  return weapons
-    .filter((elem) => elem.durability > durability)
-    .map((elem) => elem.name);
+  return weapons.reduce((acc, elem) => {
+    if (elem.durability > durability) {
+      return [...acc, ...elem.name]
+    }
+  }, 0)
+    // .filter((elem) => elem.durability > durability)
+    // .map((elem) => elem.name);
 }
 
 function getTotalDamage() {
-  return weapons.map((elem) => elem.attack).reduce((elem, acc) => elem + acc);
+
+  
+  return weapons.reduce((acc, elem) => acc + elem.attack, 0)
+
 }
 //! Функция со звездочкой
 function getValuestCountToSumValues(arr, sum) {
