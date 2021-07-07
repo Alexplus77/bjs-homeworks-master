@@ -90,7 +90,7 @@ function memorize(sum, limit) {
   
   return function (...mSum) {
     
-    memory.push({ args: mSum, result: sum()})
+    memory.push({ args: mSum, result:mSum.reduce((elem, acc)=>elem+acc)})
     console.log(memory)
   }
   
