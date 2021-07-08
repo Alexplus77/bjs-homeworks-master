@@ -89,7 +89,7 @@ function memorize(sum, limit) {
   const memory = [];
 
   return function (...mSum) {
-    if (mSum.length <= limit) {
+    if (memory.length <= limit) {
       memory.push({
         args: mSum,
         result: mSum.reduce((elem, acc) => elem + acc),
