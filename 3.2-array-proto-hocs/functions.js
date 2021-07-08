@@ -69,12 +69,14 @@ function sum(...args) {
 }
 
 function compareArrays(arr1, arr2) {
-  if (arr1.reduce((acc, elem) => acc + elem, 0) === arr2.reduce((acc, elem) => acc + elem,0)) {
-   return true
+  if (
+    arr1.reduce((acc, elem) => acc + elem, 0) ===
+    arr2.reduce((acc, elem) => acc + elem, 0)
+  ) {
+    return true;
   } else if (!arr1.length || !arr2.length) {
-    return true
- }
-
+    return true;
+  }
 }
 
 // compareArrays([8, 9], [6]); // false, разные значения
@@ -83,24 +85,33 @@ function compareArrays(arr1, arr2) {
 // compareArrays([1, 2, 3], [2, 3, 1]); // false, разные индексы, хотя и одинаковые значения
 // compareArrays([8, 1, 2], [8, 1, 2]); // true
 
-function memorize(sum, limit) {  
-  
-  const memory = []
+function memorize(sum, limit) {
+  const memory = [];
 
-  
   return function (...mSum) {
-    
-    memory.push({ args: mSum, result:mSum.reduce((elem, acc)=>elem+acc)})
-    console.log(memory)
-  }
-  
+    if (mSum.length <= limit) {
+      memory.push({
+        args: mSum,
+        result: mSum.reduce((elem, acc) => elem + acc),
+      });
+      console.log(memory);
+      function find() {
+        for (obj of memory) {
+          arr1 = obj.args;
+          arr2 = mSum;
+          if (compareArrays(arr1, arr2)) {
+            console.log(obj.result);
+            return obj.result;
+          }
+        }
+      }
+      find();
+    }
+  };
 }
-
-
-
-
-const mSum = memorize(sum, 5);
-sum(3,4)
+const mSum = memorize(sum, 4);
+sum(3, 4);
 console.log(sum(3, 4)); // 7
-mSum(3, 4)
-mSum(1,3)
+mSum(3, 4);
+mSum(1, 3);
+console.log(mSum(4, 4, 5));
