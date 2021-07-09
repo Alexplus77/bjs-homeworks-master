@@ -90,20 +90,20 @@ function memorize(sum, limit) {
 
   return function (...args) {
     dVal = sum(...args);
-
-    for (elem of memory) {
-      arr1 = elem.args
-      arr2 = args
-      if (elem.args === args) {
-        return elem.result;
-      }
-    }
-    memory.push({
+    arr1 = memory.map((elem) => elem.args)
+    arr2 = args    
+    if (compareArrays(arr1, arr2)) {
+      return dVal
+    } else {
+      memory.push({
       args,
       result: args.reduce((elem, acc) => elem + acc),
-    });    
+    });
+    
     return dVal;
   };
+    }
+    
 }
 const mSum = memorize(sum, 4);
 sum(3, 4);
@@ -112,4 +112,5 @@ mSum(3, 4);
 mSum(1, 3);
 mSum(3, 4);
 console.log(mSum(3, 4, 9));
+console.log(mSum(3, 4));
 console.log(mSum(3, 4));
