@@ -85,7 +85,7 @@ function memorize(sum, limit) {
     dVal = sum(...args);
     if (memory.length <= limit) {
       for (const elem of memory) {
-        if (args.every((n, i) => n === elem.args[i])) {
+        if (compareArrays(args, elem.args)) {
           return elem.result;
         }
       }
