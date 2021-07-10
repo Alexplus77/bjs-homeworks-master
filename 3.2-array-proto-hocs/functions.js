@@ -93,13 +93,15 @@ function memorize(sum, limit) {
       console.log(memory);
 
       return dVal;
+    } else {
+      memory.pop()
     }
   };
 }
-const mSum = memorize(sum, 4);
+const mSum = memorize(sum, 3);
 sum(3, 4);
 console.log(sum(3, 4)); // 7
-mSum(3, 4);
+mSum(3, 2);
 mSum(1, 3);
 mSum(3, 4);
 console.log(mSum(3, 2, 5));
