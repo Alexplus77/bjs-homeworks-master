@@ -82,10 +82,7 @@ function memorize(sum, limit) {
     dVal = sum(...args);
     if (memory.length <= limit) {
       for (const elem of memory) {
-        
-        console.log(args);
-       
-        if ( args.every((n, i)=> n === elem.args[i])) {
+        if (args.every((n, i) => n === elem.args[i])) {
           return elem.result;
         }
       }
@@ -93,8 +90,8 @@ function memorize(sum, limit) {
         args,
         result: args.reduce((elem, acc) => elem + acc),
       });
+      console.log(memory);
 
-      
       return dVal;
     }
   };
@@ -105,6 +102,6 @@ console.log(sum(3, 4)); // 7
 mSum(3, 4);
 mSum(1, 3);
 mSum(3, 4);
-console.log(mSum(3, 2, 9));
+console.log(mSum(3, 2, 5));
 console.log(mSum(3, 4));
 console.log(mSum(3, 4));
