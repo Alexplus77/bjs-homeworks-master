@@ -81,15 +81,14 @@ function compareArrays(arr1, arr2) {
 
 function memorize(fn, limit) {
   const memory = [];
-  return function (...args) {
-    dVal = fn(...args);
-    if (memory.length <= limit) {
-
-      for (const elem of memory) {
+  return function (...args) { 
+    
+           for (const elem of memory) {
         if (compareArrays(args, elem.args)) {
           return elem.result;
         }
       }
+      dVal = fn(...args);
       memory.push({
         args,
         result: dVal,
@@ -97,9 +96,7 @@ function memorize(fn, limit) {
       console.log(memory);
 
       return dVal;
-    } else {
-      memory.pop()
-    }
+    
   };
 }
 const mSum = memorize(fn, 4);
