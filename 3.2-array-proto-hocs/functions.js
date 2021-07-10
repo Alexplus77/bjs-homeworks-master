@@ -82,15 +82,9 @@ function compareArrays(arr1, arr2) {
 function memorize(fn, limit) {
   const memory = [];
   return function (...args) {
-    //   memory.find(elem => {
-    //   if (compareArrays(args, elem.args)) {
-    //     return elem.result;
-    //   }
-    // })
-    for (const elem of memory) {
-      if (compareArrays(args, elem.args)) {
-        return elem.result;
-      }
+    const elemInMemory = memory.find((elem) => compareArrays(args, elem.args));
+    if (elemInMemory !== undefined) {
+      return elemInMemory.result;
     }
     dVal = fn(...args);
     memory.push({
