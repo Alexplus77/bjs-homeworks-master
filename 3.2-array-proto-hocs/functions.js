@@ -79,7 +79,7 @@ function compareArrays(arr1, arr2) {
 // compareArrays([1, 2, 3], [2, 3, 1]); // false, разные индексы, хотя и одинаковые значения
 // compareArrays([8, 1, 2], [8, 1, 2]); // true
 
-function memorize(sum, limit) {
+function memorize(fn, limit) {
   const memory = [];
   return function (...args) {
     dVal = fn(...args);
