@@ -91,7 +91,7 @@ function memorize(sum, limit) {
       }
       memory.push({
         args,
-        result: args.reduce((elem, acc) => elem + acc),
+        result: dVal,
       });
       console.log(memory);
 
