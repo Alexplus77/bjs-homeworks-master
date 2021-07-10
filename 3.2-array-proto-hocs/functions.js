@@ -70,7 +70,7 @@ function fn(...args) {
 
 function compareArrays(arr1, arr2) {
   if (arr1.length === arr2.length) {
-    return arr1.every((n, i) => n === arr2[i])
+    return arr1.every((n, i) => n === arr2[i]);
   }
 }
 // compareArrays([8, 9], [6]); // false, разные значения
@@ -82,26 +82,26 @@ function compareArrays(arr1, arr2) {
 function memorize(fn, limit) {
   const memory = [];
   return function (...args) {
-  //   memory.find(elem => {
-  //   if (compareArrays(args, elem.args)) {
-  //     return elem.result;
-  //   }
-  // })
-           for (const elem of memory) {
-        if (compareArrays(args, elem.args)) {
-          return elem.result;
-        }
+    //   memory.find(elem => {
+    //   if (compareArrays(args, elem.args)) {
+    //     return elem.result;
+    //   }
+    // })
+    for (const elem of memory) {
+      if (compareArrays(args, elem.args)) {
+        return elem.result;
       }
-      dVal = fn(...args);
-      memory.push({
-        args,
-        result: dVal,
-      });
-    if (memory.length > limit) {
-      memory.pop()
     }
-      console.log(memory);
-      return dVal;    
+    dVal = fn(...args);
+    memory.push({
+      args,
+      result: dVal,
+    });
+    if (memory.length > limit) {
+      memory.pop();
+    }
+    console.log(memory);
+    return dVal;
   };
 }
 const mSum = memorize(fn, 4);
