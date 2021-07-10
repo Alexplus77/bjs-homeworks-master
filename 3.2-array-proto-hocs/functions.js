@@ -60,7 +60,7 @@ function sleep(milliseconds) {
   while (new Date().getTime() <= e) {}
 }
 
-function sum(...args) {
+function fn(...args) {
   // Замедление на половину секунды.
   sleep(100); // Можно использовать другое значение замедления.
   return args.reduce((sum, arg) => {
@@ -82,8 +82,9 @@ function compareArrays(arr1, arr2) {
 function memorize(sum, limit) {
   const memory = [];
   return function (...args) {
-    dVal = sum(...args);
+    dVal = fn(...args);
     if (memory.length <= limit) {
+
       for (const elem of memory) {
         if (compareArrays(args, elem.args)) {
           return elem.result;
@@ -101,9 +102,9 @@ function memorize(sum, limit) {
     }
   };
 }
-const mSum = memorize(sum, 4);
-sum(3, 4);
-console.log(sum(3, 4)); // 7
+const mSum = memorize(fn, 4);
+fn(3, 4);
+console.log(fn(3, 4)); // 7
 mSum(3, 2);
 mSum(1, 3);
 mSum(3, 4);
