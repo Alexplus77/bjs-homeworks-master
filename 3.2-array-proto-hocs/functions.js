@@ -83,10 +83,10 @@ function memorize(fn, limit) {
   const memory = [];
   return function (...args) {
     const elemInMemory = memory.find((elem) => compareArrays(args, elem.args));
-    if (elemInMemory !== undefined) {
+    if (elemInMemory) {
       return elemInMemory.result;
     }
-    dVal = fn(...args);
+    const dVal = fn(...args);
     memory.push({
       args,
       result: dVal,
