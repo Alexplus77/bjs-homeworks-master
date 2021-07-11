@@ -33,7 +33,9 @@ class AlarmClock {
     }
   }
   getCurrentFormattedTime() {
-    return time;
+    const hh = new Date().getHours();
+    const mm = new Date().getMinutes();
+    return [hh, mm].join(":");
   }
   start() {}
   stop() {}
@@ -56,3 +58,5 @@ console.log(
   phoneAlarm.addClock("12:35", () => console.log("Пора вставать"), 4)
 );
 console.log(phoneAlarm.removeClock(3));
+
+console.log(phoneAlarm.getCurrentFormattedTime());
