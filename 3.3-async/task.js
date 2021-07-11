@@ -36,13 +36,15 @@ class AlarmClock {
     const timeNow = new Date().toLocaleTimeString().slice(0, -3);
     return timeNow;
   }
+  //? Пока checkClock() не возвращает true
   checkClock() {
-    return this.alarmCollection.find((elem) => {
+     this.alarmCollection.find((elem) => {
       if (elem.time === this.getCurrentFormattedTime()) {
         return true;
       }
     });
   }
+
   start() {
     if (this.checkClock()) {
       console.log(this.getCurrentFormattedTime());
@@ -68,7 +70,7 @@ console.log(
   phoneAlarm.addClock("11:35", () => console.log("Пора вставать"), 2)
 );
 console.log(
-  phoneAlarm.addClock("20:50", () => console.log("Пора вставать"), 3)
+  phoneAlarm.addClock("21:25", () => console.log("Пора вставать"), 3)
 );
 //console.log(phoneAlarm.removeClock(3));
 
