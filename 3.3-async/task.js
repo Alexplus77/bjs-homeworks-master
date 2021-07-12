@@ -1,6 +1,7 @@
 class AlarmClock {
   constructor() {
-    (this.alarmCollection = []), this.timerId;
+    this.alarmCollection = [];
+    this.timerId = null;
   }
   addClock(time, callback, id) {
     if (!id) {
@@ -19,43 +20,50 @@ class AlarmClock {
     }
   }
   removeClock(id) {
-    if (
-      this.alarmCollection.find((elem, i) => {
-        if (elem.id === id) {
-          this.alarmCollection.splice(i, 1);
-          return true;
-        }
-      })
-    ) {
+    const index = this.alarmCollection.findIndex((elem) => elem.id === id);
+    if (index > -1) {
+      this.alarmCollection.splice(index, 1);
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
   getCurrentFormattedTime() {
     const timeNow = new Date().toLocaleTimeString().slice(0, -3);
     return timeNow;
   }
-  //? Пока checkClock() не возвращает true
+
   checkClock() {
-     this.alarmCollection.find((elem) => {
+    this.alarmCollection.find((elem) => {
       if (elem.time === this.getCurrentFormattedTime()) {
-        return true;
+        return elem.callback();
       }
     });
   }
 
+  alarmCallInterval() {
+    this.alarmCollection.forEach((elem) => this.checkClock());
+  }
   start() {
-    if (this.checkClock()) {
-      console.log(this.getCurrentFormattedTime());
-      return this.alarmCollection.find((elem) => {
-        elem.callback;
-      });
+    this.checkClock();
+    if (this.timerId === null) {
+      this.timerId = setInterval(this.alarmCallInterval, 1000);
     }
   }
-  stop() {}
-  printAlarms() {}
-  clearAlarms() {}
+  stop() {
+    if (this.timerId) {
+      clearInterval(this.timerId);
+      this.timerId = null;
+    }
+  }
+  printAlarms() {
+    this.alarmCollection.forEach((elem) =>
+      console.log(`Будильник ${elem.id} заведен на ${elem.time}`)
+    );
+  }
+  clearAlarms() {
+    clearInterval(this.timerId);
+    this.alarmCollection.length = null;
+  }
 }
 
 let phoneAlarm = new AlarmClock();
@@ -64,15 +72,21 @@ console.log(
   phoneAlarm.addClock("09:05", () => console.log("Пора вставать"), 1)
 );
 console.log(
-  phoneAlarm.addClock("10:35", () => console.log("Пора вставать"), 2)
+  phoneAlarm.addClock("10:45", () => console.log("Пора вставать"), 2)
 );
 console.log(
   phoneAlarm.addClock("11:35", () => console.log("Пора вставать"), 2)
 );
 console.log(
-  phoneAlarm.addClock("21:25", () => console.log("Пора вставать"), 3)
+  phoneAlarm.addClock("17:29", () => console.log("Пора вставать3"), 3)
 );
 //console.log(phoneAlarm.removeClock(3));
 
 console.log(phoneAlarm.getCurrentFormattedTime());
+console.log(phoneAlarm.printAlarms());
 console.log(phoneAlarm.checkClock());
+console.log(phoneAlarm.start());
+//console.log(phoneAlarm.stop());
+console.log(phoneAlarm.clearAlarms());
+
+console.log(phoneAlarm);
